@@ -1,6 +1,4 @@
-# Cooking-Bot 
-# Made change by Ricky :)
-
+# Cooking-Bot
 # app that generate menu for you by AI
 
-#computer vision
+# features & who do what
