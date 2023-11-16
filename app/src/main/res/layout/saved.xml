@@ -41,8 +41,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/savedRecipesTextView"
-                    android:layout_marginTop="20dp"
-                    android:text="Your favorite recipes that you've bookmarked will appear here"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="Your favorite recipes that you've saved will appear here"
                     android:textColor="#222222"
                     android:textSize="14sp" />
 
