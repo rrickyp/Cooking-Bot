@@ -20,6 +20,12 @@
             android:name=".Recommendation"
             android:exported="false" />
         <activity
+            android:name=".SavedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecommendedRecipeActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
