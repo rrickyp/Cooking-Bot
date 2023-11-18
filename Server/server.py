@@ -114,7 +114,7 @@ def get_food_data(food_name):
     food_name = food_data[0]
     ingredients = food_data[1].split(", ")
 
-    return jsonify(food_data)
+    return jsonify({'food_name': food_name, 'ingredients': ingredients})
 
 
 app.run(host="0.0.0.0", port=8080)
