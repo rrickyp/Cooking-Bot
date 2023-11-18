@@ -89,7 +89,7 @@ def recognize():
         # Extract the ingredient names from `detections`
         ingredients = [eachObject["name"] for eachObject in detections]
         ingredients.append("cheese")
-        ingredients.append("BEEEEEEEEEEEEEEEEEEEEEEEEEF")
+        ingredients.append("Beef")
         ingredients.append("Tomato")
         ingredients.append("Bread")
         ingredients.append("Bread2")
