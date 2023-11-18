@@ -1,7 +1,9 @@
 package hku.hk.cs.cooking_bot
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -30,6 +32,7 @@ class ScanPage : AppCompatActivity() {
     private var btn_gallery: Button? = null
     private var btn_scan: Button? = null
     private var generate_recipe: LinearLayout? = null
+    private var scanSuccessful: Boolean? = false
     private var bitmap: Bitmap? = null
     private var url:String? = "http://10.68.12.61:8080/recognize"
     private var ingredients = arrayListOf<String>()
@@ -55,14 +58,14 @@ class ScanPage : AppCompatActivity() {
         }
 
         generate_recipe = findViewById(R.id.generateButton) as LinearLayout
+        updateGenerateButtonState()
 
         generate_recipe!!.setOnClickListener {
-
-            // setContentView(R.layout.activity_recommendation);
-            val goToRecommendation = Intent(this, Recommendation::class.java)
-            goToRecommendation.putStringArrayListExtra("matchingFoods", matchingFoods)
-            startActivity(goToRecommendation)
-
+            if (scanSuccessful == true) {
+                val goToRecommendation = Intent(this, Recommendation::class.java)
+                goToRecommendation.putStringArrayListExtra("matchingFoods", matchingFoods)
+                startActivity(goToRecommendation)
+            }
         }
 
         val click_cancel_button = findViewById(R.id.cancel_button) as TextView
@@ -85,6 +88,16 @@ class ScanPage : AppCompatActivity() {
         intent.type = "image/*"
         intent.setAction(Intent.ACTION_GET_CONTENT)
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), 7)
+    }
+
+    private fun updateGenerateButtonState() {
+        if (scanSuccessful == true) {
+            generate_recipe!!.isClickable = true
+            generate_recipe!!.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FF9A3D"))
+        } else {
+            generate_recipe!!.isClickable = false
+            generate_recipe!!.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#ECECEC"))
+        }
     }
 
     private fun uploadImage() {
@@ -110,7 +123,9 @@ class ScanPage : AppCompatActivity() {
                     println("Ingredients: $ingredients")
                     println("Matching Foods: $matchingFoods")
 
+                    scanSuccessful = true
                     updateIngredientsTextView(ingredients) // Update the UI with the retrieved ingredients
+                    updateGenerateButtonState()
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
