@@ -93,6 +93,8 @@ def recognize():
         ingredients.append("Tomato")
         ingredients.append("Bread")
         ingredients.append("Bread2")
+        ingredients.append("Bread3")
+        ingredients.append("bread4")
 
         # Compare the scanned ingredients with the foods in the database
         matching_foods = compare_ingredients(ingredients)
