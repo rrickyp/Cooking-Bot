@@ -107,100 +107,23 @@
                     android:textColor="#222222"
                     android:textSize="18sp"/>
 
+                <TextView
+                    android:id="@+id/tv_ingredients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/corner"
+                    android:backgroundTint="#FFEBD9"
+                    android:elevation="0dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:text="TextView" />
+
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:padding="20dp">
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:paddingVertical="4dp">
-
-                        <TextView
-                            android:id="@+id/textView29"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="8dp"
-                            android:background="@drawable/corner"
-                            android:backgroundTint="#FFEBD9"
-                            android:elevation="0dp"
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="8dp"
-                            android:text="TextView" />
-
-                        <TextView
-                            android:id="@+id/textView30"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="8dp"
-                            android:background="@drawable/corner"
-                            android:backgroundTint="#FFEBD9"
-                            android:elevation="0dp"
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="8dp"
-                            android:text="TextView" />
-
-                        <TextView
-                            android:id="@+id/textView31"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="8dp"
-                            android:background="@drawable/corner"
-                            android:backgroundTint="#FFEBD9"
-                            android:elevation="0dp"
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="8dp"
-                            android:text="TextView" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:paddingVertical="4dp">
-
-                        <TextView
-                            android:id="@+id/textView17"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TextView"
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="8dp"
-                            android:layout_marginRight="8dp"
-                            android:background="@drawable/corner"
-                            android:backgroundTint="#FFEBD9"
-                            android:elevation="0dp" />
-
-                        <TextView
-                            android:id="@+id/textView22"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TextView"
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="8dp"
-                            android:layout_marginRight="8dp"
-                            android:background="@drawable/corner"
-                            android:backgroundTint="#FFEBD9"
-                            android:elevation="0dp" />
-
-                        <TextView
-                            android:id="@+id/textView27"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TextView"
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="8dp"
-                            android:layout_marginRight="8dp"
-                            android:background="@drawable/corner"
-                            android:backgroundTint="#FFEBD9"
-                            android:elevation="0dp" />
-
-                    </TableRow>
-
-                </TableLayout>
+                    android:padding="20dp"/>
 
             </LinearLayout>
 
