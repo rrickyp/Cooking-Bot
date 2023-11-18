@@ -23,7 +23,7 @@ cursor.execute('''
 
 # Insert food entries
 food_data = [
-    ('Pizza', '300g Dough, 200g Tomato Sauce, 200g Cheese, Toppings', 4, 4, 30, 20, '1. Prepare the pizza dough, 2. Add tomato sauce and toppings, 3. Bake in the oven.', 'pizza'),
+    ('Pizza', '300g Flour, 200g Tomato, 200g Cheese, 70g Mushroom, 20g Spinach, 10g Pepper', 6, 4, 30, 20, '1. Prepare the pizza dough, 2. Add tomato sauce and toppings, 3. Bake in the oven.', 'pizza'),
     ('Noodle', '200g Noodles, Vegetables, 300g Meat, Sauce', 5, 2, 15, 10, '1. Boil the noodles, 2. Cook the vegetables and meat, 3. Mix with sauce.', 'noodle'),
     ('Rice Cake', '250g Rice Flour, 100g Sugar, Toppings', 3, 6, 40, 30, '1. Mix rice flour and sugar, 2. Steam the mixture, 3. Add toppings.', 'ricecake'),
     ('Burger', 'Bun, Patty, Cheese, Lettuce, Tomato', 5, 1, 25, 15, '1. Cook the patty, 2. Assemble the burger with bun, patty, and toppings.', 'burger'),
