@@ -45,6 +45,7 @@ class RecommendedRecipeActivity : AppCompatActivity() {
 
         val imageView = findViewById<ImageView>(R.id.imageView2)
         val imagePath = selectedFoodData.image_path
+        println("IMGPATH : $imagePath")
         if (imagePath != null && imagePath.isNotEmpty()) {
             val drawableId = resources.getIdentifier(imagePath, "drawable", packageName)
             if (drawableId != 0) {

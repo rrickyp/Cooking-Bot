@@ -14,7 +14,7 @@ import com.google.gson.Gson
 
 class Recommendation : AppCompatActivity() {
 
-    data class FoodData(val food_name: String, val ingredients: List<String>, val total_ingredients: Int, val serving_size: Int, val preparation_time: Int, val cooking_time: Int, val how_to_cook: String)
+    data class FoodData(val food_name: String, val ingredients: List<String>, val total_ingredients: Int, val serving_size: Int, val preparation_time: Int, val cooking_time: Int, val how_to_cook: String, val image_path: String)
     private var cook_now_button: Button? = null
     private var selected_food_data: FoodData? = null
 
@@ -40,7 +40,7 @@ class Recommendation : AppCompatActivity() {
         val textView = findViewById<TextView>(R.id.textView3)
 
         val matchingFoods = intent.getStringArrayListExtra("matchingFoods")
-        println(matchingFoods)
+        println("mattchingfood: $matchingFoods")
         if (matchingFoods != null && matchingFoods.isNotEmpty()) {
             val foodName = matchingFoods[0]
             val foodNameFormat = foodName.substringAfter("\"").substringBefore("\"")
@@ -55,7 +55,7 @@ class Recommendation : AppCompatActivity() {
                 val jsonSelectedFoodData = Gson().toJson(selected_food_data)
                 val goToRecipe = Intent(this, RecommendedRecipeActivity::class.java)
                 goToRecipe.putExtra("selected_food_data", jsonSelectedFoodData)
-                println(jsonSelectedFoodData)
+                println("jsonselecteddata: $jsonSelectedFoodData")
                 startActivity(goToRecipe)
             }
         }
@@ -75,7 +75,7 @@ class Recommendation : AppCompatActivity() {
                 val foodDataJson = response
                 val foodData = Gson().fromJson(foodDataJson, FoodData::class.java)
                 selected_food_data = foodData
-                println(selected_food_data)
+                println("selectedfooddata: $selected_food_data")
             },
             Response.ErrorListener { error ->
                 error.printStackTrace()
