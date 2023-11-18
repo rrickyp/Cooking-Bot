@@ -153,6 +153,21 @@
                         android:layout_weight="1"
                         android:text="1. Make the base: Put the flour into a large bowl, then stir in the yeast and salt. \n2. Make a well, pour in 200ml warm water and the olive oil and bring together with a wooden spoon until you have a soft, fairly wet dough. \n3. Turn onto a lightly floured surface and knead for 5 mins until smooth. \n4. Cover with a tea towel and set aside. \n5. You can leave the dough to rise if you like, but it’s not essential for a thin crust." />
 
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginBottom="12dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Video Tutorial"
+                        android:textColor="#222222"
+                        android:textSize="16sp" />
+
+                    <VideoView
+                        android:id="@+id/videoView"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"/>
 
                 </LinearLayout>
             </LinearLayout>
