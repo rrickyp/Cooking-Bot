@@ -112,7 +112,7 @@
                 <androidx.gridlayout.widget.GridLayout
                     android:id="@+id/tv_ingredients"
                     android:layout_width="match_parent"
-                    android:layout_height="160dp"
+                    android:layout_height="180dp"
                     android:paddingHorizontal="20dp"
                     android:paddingVertical="16dp"
                     app:columnCount="3">
