@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val temp = arrayListOf<String>("aaa")
-        val intent = Intent(this, RecommendedRecipeActivity::class.java).apply {
+        val intent = Intent(this, ScanPage::class.java).apply {
             putStringArrayListExtra("data", temp)
         }
         startActivity(intent)
