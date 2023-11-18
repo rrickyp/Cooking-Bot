@@ -24,7 +24,7 @@ class ScanPage : AppCompatActivity() {
     private var btn_gallery: Button? = null
     private var btn_upload: Button? = null
     private var bitmap: Bitmap? = null
-    private var url:String? = "http://10.70.56.177:5000/recognize"
+    private var url:String? = "http://10.68.170.110:8080/recognize"
     private var ingredients = arrayListOf<String>()
     private var imageView: ImageView? = null
 
