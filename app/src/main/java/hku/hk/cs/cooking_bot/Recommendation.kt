@@ -14,7 +14,17 @@ import com.google.gson.Gson
 
 class Recommendation : AppCompatActivity() {
 
-    data class FoodData(val food_name: String, val ingredients: List<String>, val total_ingredients: Int, val serving_size: Int, val preparation_time: Int, val cooking_time: Int, val how_to_cook: String, val image_path: String)
+    data class FoodData(
+        val food_name: String,
+        val ingredients: List<String>,
+        val total_ingredients: Int,
+        val serving_size: Int,
+        val preparation_time: Int,
+        val cooking_time: Int,
+        val how_to_cook: String,
+        val image_path: String
+    )
+
     private var cook_now_button: Button? = null
     private var selected_food_data: FoodData? = null
 
@@ -31,7 +41,7 @@ class Recommendation : AppCompatActivity() {
         }
 
         val saved_button = findViewById(R.id.saved_icon) as ImageView
-            saved_button.setOnClickListener {
+        saved_button.setOnClickListener {
 
             val goToSavedActivity = Intent(this, SavedActivity::class.java)
             startActivity(goToSavedActivity)
@@ -40,7 +50,7 @@ class Recommendation : AppCompatActivity() {
         val textView = findViewById<TextView>(R.id.textView3)
 
         val matchingFoods = intent.getStringArrayListExtra("matchingFoods")
-        println("mattchingfood: $matchingFoods")
+        println("matchingfood: $matchingFoods")
         if (matchingFoods != null && matchingFoods.isNotEmpty()) {
             val foodName = matchingFoods[0]
             val foodNameFormat = foodName.substringAfter("\"").substringBefore("\"")
@@ -50,7 +60,7 @@ class Recommendation : AppCompatActivity() {
             textView.text = "Test Food"
         }
 
-        cook_now_button!!.setOnClickListener {
+        cook_now_button?.setOnClickListener {
             if (selected_food_data != null) {
                 val jsonSelectedFoodData = Gson().toJson(selected_food_data)
                 val goToRecipe = Intent(this, RecommendedRecipeActivity::class.java)
@@ -59,9 +69,6 @@ class Recommendation : AppCompatActivity() {
                 startActivity(goToRecipe)
             }
         }
-
-
-
     }
 
     private fun getDataFromAPI(foodName: String) {
@@ -71,11 +78,28 @@ class Recommendation : AppCompatActivity() {
             Method.GET, url,
             Response.Listener<String> { response ->
                 // Handle the successful response here
-                println("Ini hasil narik data: $response")
                 val foodDataJson = response
                 val foodData = Gson().fromJson(foodDataJson, FoodData::class.java)
                 selected_food_data = foodData
                 println("selectedfooddata: $selected_food_data")
+
+                val imageView = findViewById<ImageView>(R.id.imageView)
+                val imagePath = selected_food_data?.image_path
+                if (imagePath != null && imagePath.isNotEmpty()) {
+                    val drawableId = resources.getIdentifier(imagePath, "drawable", packageName)
+                    if (drawableId != 0) {
+                        imageView.setImageResource(drawableId)
+                    }
+                }
+
+                val timeAndIngredientsTextView = findViewById<TextView>(R.id.textView4)
+                val cookingTime = selected_food_data?.cooking_time ?: 0
+                val preparationTime = selected_food_data?.preparation_time ?: 0
+                val totalTime = cookingTime + preparationTime
+
+                val timeAndIngredientsText = "$totalTime mins | ${selected_food_data?.total_ingredients} ingredients"
+                timeAndIngredientsTextView.text = timeAndIngredientsText
+
             },
             Response.ErrorListener { error ->
                 error.printStackTrace()
@@ -83,6 +107,4 @@ class Recommendation : AppCompatActivity() {
         ) {}
         requestQueue.add(stringRequest)
     }
-
-
 }

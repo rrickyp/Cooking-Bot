@@ -103,14 +103,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#FFFFFF"
-                            android:text="100% ingredients accuracy" />
-
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
-                            android:text="0 missing ingredients" />
+                            android:text="Top ingredients accuracy!" />
 
                         <Button
                             android:id="@+id/button2"
@@ -143,6 +136,7 @@
                             android:id="@+id/imageView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:scaleType="centerCrop"
                             android:src="@drawable/pizza2" />
                     </androidx.cardview.widget.CardView>
 
