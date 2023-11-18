@@ -173,6 +173,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/saveView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -183,14 +184,14 @@
             android:paddingVertical="10dp">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/bookmarkIcon"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
 
                 android:src="@drawable/bookmark" />
 
             <TextView
-                android:id="@+id/textView27"
+                android:id="@+id/saveText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"

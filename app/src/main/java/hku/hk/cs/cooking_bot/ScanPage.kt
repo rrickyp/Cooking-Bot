@@ -23,6 +23,7 @@ class ScanPage : AppCompatActivity() {
     private var btn_camera: Button? = null
     private var btn_gallery: Button? = null
     private var btn_upload: Button? = null
+    private var generate_recipe: TextView? = null
     private var bitmap: Bitmap? = null
     private var url:String? = "http://10.68.170.110:8080/recognize"
     private var ingredients = arrayListOf<String>()
@@ -43,6 +44,16 @@ class ScanPage : AppCompatActivity() {
         }
         btn_upload!!.setOnClickListener {
             uploadImage()
+        }
+
+        generate_recipe = findViewById(R.id.generateButton) as TextView
+
+        generate_recipe!!.setOnClickListener {
+
+            // setContentView(R.layout.activity_recommendation);
+            val goToReccomendation = Intent(this, Recommendation::class.java)
+            startActivity(goToReccomendation)
+
         }
 
     }
