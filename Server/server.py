@@ -112,7 +112,7 @@ def get_food_data(food_name):
     cursor = conn.cursor()
 
     # Retrieve the food data for the specified food name
-    cursor.execute("SELECT food_name, ingredients, total_ingredients, serving_size, preparation_time, cooking_time, how_to_cook, image_path FROM foods WHERE food_name=?", (food_name,))
+    cursor.execute("SELECT food_name, ingredients, total_ingredients, serving_size, preparation_time, cooking_time, how_to_cook, image_path, video_path FROM foods WHERE food_name=?", (food_name,))
     food_data = cursor.fetchone()
 
     # Close the database connection

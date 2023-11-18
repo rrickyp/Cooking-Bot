@@ -22,7 +22,8 @@ class Recommendation : AppCompatActivity() {
         val preparation_time: Int,
         val cooking_time: Int,
         val how_to_cook: String,
-        val image_path: String
+        val image_path: String,
+        val video_path: String
     )
 
     private var cook_now_button: Button? = null
