@@ -35,7 +35,7 @@ food_data = [
     ('Omelette', 'Eggs, Veggies, Cheese, Salt, Pepper', 2, 3, 10, 5, '1. Beat eggs with salt and pepper, 2. Cook veggies, 3. Pour eggs over veggies, 4. Sprinkle cheese, 5. Cook until set.', 'omelette', 'omelette_vid_tutorial'),
     ('Pancakes', 'Flour, Milk, Eggs, Sugar, Baking Powder, Butter', 2, 2, 15, 10, '1. Mix flour, milk, eggs, sugar, baking powder, 2. Cook on a griddle with butter, 3. Serve with desired toppings.', 'pancakes', 'pancakes_vid_tutorial'),
     ('Steak', '500g Steak, Salt, Pepper, Olive Oil, Butter', 4, 8, 25, 15, '1. Season steak with salt and pepper, 2. Heat olive oil in a pan, 3. Sear steak on both sides, 4. Add butter and baste, 5. Cook to desired doneness.', 'steak', 'steak_vid_tutorial'),
-    ('Soup', '500g Chicken Broth, Vegetables, 300g Meat, Seasonings', 3, 3, 20, 10, '1. Bring chicken broth to a boil, 2. Add vegetables, meat, and seasonings, 3. Simmer until cooked through.', 'soup', 'soup_vid_tutorial')
+    ('Soup', '500gChicken Broth, Vegetables, 300g Meat, Seasonings', 3, 3, 20, 10, '1. Bring chicken broth to a boil, 2. Add vegetables, meat, and seasonings, 3. Simmer until cooked through.', 'soup', 'soup_vid_tutorial')
 ]
 
 for food_entry in food_data:
@@ -43,7 +43,7 @@ for food_entry in food_data:
     cursor.execute("SELECT COUNT(*) FROM foods WHERE food_name=?", (food_name,))
     count = cursor.fetchone()[0]
     if count == 0:
-        cursor.execute("INSERT INTO foods (food_name, ingredients, total_ingredients, serving_size, preparation_time, cooking_time, how_to_cook, image_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", food_entry)
+        cursor.execute("INSERT INTO foods (food_name, ingredients, total_ingredients, serving_size, preparation_time, cooking_time, how_to_cook, image_path, video_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", food_entry)
 
 # Commit the changes and close the connection
 conn.commit()
