@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.LinearLayout
+import android.widget.ImageView
 
 class Recommendation : AppCompatActivity() {
     private var cook_now_button: Button? = null
@@ -22,7 +22,7 @@ class Recommendation : AppCompatActivity() {
 
         }
 
-        val home_view = findViewById(R.id.menu_1) as LinearLayout
+        val home_view = findViewById(R.id.home_icon) as ImageView
 
         home_view.setOnClickListener {
 
