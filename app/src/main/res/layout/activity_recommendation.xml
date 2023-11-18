@@ -13,19 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="195dp"
-            android:background="#E5E5E5">
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="200dp"
+            android:background="#FFA654">
 
         </FrameLayout>
 
@@ -35,9 +29,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="20dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="730dp">
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:layout_marginBottom="64dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:id="@+id/textView"
@@ -47,16 +43,19 @@
             android:paddingTop="20dp"
             android:paddingBottom="16dp"
             android:paddingHorizontal="20dp"
-            android:text="Based on the ingredients you have, here are some recipe ideas you can make"
+            android:text="Based on the ingredients you have,\nhere are some recipe ideas you can make"
             android:textAlignment="center"
+            android:textColor="#FFFFFF"
             android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/corner"
+            android:backgroundTint="#222222"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -72,6 +71,7 @@
                         android:id="@+id/textView2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="#FFFFFF"
                         android:text="Most Recommended!" />
 
                     <TextView
@@ -81,6 +81,7 @@
                         android:paddingTop="8dp"
                         android:paddingBottom="8dp"
                         android:text="Food Name"
+                        android:textColor="#FFAC61"
                         android:fontFamily="sans-serif-medium"
                         android:textSize="24sp" />
 
@@ -93,29 +94,32 @@
                             android:id="@+id/textView4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textColor="#FFFFFF"
                             android:text="20 mins | 10 ingredients" />
 
                         <TextView
                             android:id="@+id/textView6"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textColor="#FFFFFF"
                             android:text="100% ingredients accuracy" />
 
                         <TextView
                             android:id="@+id/textView5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textColor="#FFFFFF"
                             android:text="0 missing ingredients" />
 
                         <Button
                             android:id="@+id/button2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:backgroundTint="#FAFAFA"
+                            android:backgroundTint="#222222"
                             android:paddingLeft="0dp"
                             android:text="Cook Now >"
-                            android:textColor="#898989" />
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="#FFAC61" />
 
                     </LinearLayout>
 
@@ -125,12 +129,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:baselineAligned="false"
+                    android:paddingBottom="12dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
+                        android:layout_width="132dp"
+                        android:layout_height="132dp"
                         app:cardCornerRadius="100dp">
 
                         <ImageView
@@ -143,22 +148,24 @@
                 </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp">
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp">
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginVertical="12dp"
+                android:fontFamily="sans-serif-medium"
                 android:text="Other Recommendations"
-                android:fontFamily="sans-serif-medium" />
+                android:textAlignment="center" />
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -676,95 +683,52 @@
     <LinearLayout
         android:id="@+id/menu"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="#FAFAFA"
-        android:elevation="4dp"
-        android:gravity="center"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="12dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        android:clipChildren="false"
+        android:clipToPadding="false">
 
-        <LinearLayout
-            android:id="@+id/menu_1"
-            android:layout_width="40dp"
-            android:layout_height="42dp"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:layout_margin="20dp"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            app:cardElevation="40dp"
+            app:cardCornerRadius="100dp">
 
-            <ImageView
-                android:id="@+id/home_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="3.25dp"
-                android:src="@drawable/menu_home" />
-
-            <TextView
-                android:id="@+id/home_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#222222"
+                android:paddingVertical="20dp"
                 android:gravity="center"
-                android:text="Home"
-                android:textColor="#979797"
-                android:textSize="10sp" />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/home_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/HomeFilled" />
 
-        <LinearLayout
-            android:id="@+id/menu_2"
-            android:layout_width="40dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="64dp"
-            android:gravity="center"
-            android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/saved_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="64dp"
+                    android:src="@drawable/SavedOutlined" />
 
-            <ImageView
-                android:id="@+id/saved_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="3.25dp"
-                android:src="@drawable/menu_saved" />
+                <ImageView
+                    android:id="@+id/setting_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="64dp"
+                    android:src="@drawable/SettingOutlined" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/saved_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:text="Saved"
-                android:textColor="#979797"
-                android:textSize="10sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/menu_3"
-            android:layout_width="40dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="64dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/setting_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="3.25dp"
-                android:src="@drawable/menu_setting" />
-
-            <TextView
-                android:id="@+id/setting_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:text="Setting"
-                android:textColor="#979797"
-                android:textSize="10sp" />
-
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 

@@ -268,95 +268,52 @@
     <LinearLayout
         android:id="@+id/menu"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="#FAFAFA"
-        android:elevation="4dp"
-        android:gravity="center"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="12dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        android:clipChildren="false"
+        android:clipToPadding="false">
 
-        <LinearLayout
-            android:id="@+id/menu_1"
-            android:layout_width="40dp"
-            android:layout_height="42dp"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:layout_margin="20dp"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            app:cardElevation="40dp"
+            app:cardCornerRadius="100dp">
 
-            <ImageView
-                android:id="@+id/home_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="3.25dp"
-                android:src="@drawable/menu_home" />
-
-            <TextView
-                android:id="@+id/home_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#222222"
+                android:paddingVertical="20dp"
                 android:gravity="center"
-                android:text="Home"
-                android:textColor="#979797"
-                android:textSize="10sp" />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/home_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/HomeOutlined" />
 
-        <LinearLayout
-            android:id="@+id/menu_2"
-            android:layout_width="40dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="64dp"
-            android:gravity="center"
-            android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/saved_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="64dp"
+                    android:src="@drawable/SavedFilled" />
 
-            <ImageView
-                android:id="@+id/saved_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="3.25dp"
-                android:src="@drawable/menu_saved" />
+                <ImageView
+                    android:id="@+id/setting_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="64dp"
+                    android:src="@drawable/SettingOutlined" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/saved_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:text="Saved"
-                android:textColor="#979797"
-                android:textSize="10sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/menu_3"
-            android:layout_width="40dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="64dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/setting_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="3.25dp"
-                android:src="@drawable/menu_setting" />
-
-            <TextView
-                android:id="@+id/setting_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:text="Setting"
-                android:textColor="#979797"
-                android:textSize="10sp" />
-
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
