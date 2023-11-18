@@ -89,7 +89,7 @@
                     android:scaleType="fitCenter" />
 
                 <Button
-                    android:id="@+id/upload"
+                    android:id="@+id/scanButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
@@ -108,23 +108,17 @@
                     android:textSize="18sp"/>
 
                 <androidx.gridlayout.widget.GridLayout
+                    android:id="@+id/tv_ingredients"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
                     app:columnCount="3"
                     android:paddingHorizontal="20dp"
                     android:paddingVertical="16dp" >
 
-                    <TextView
-                        android:id="@+id/tv_ingredients"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@drawable/corner"
-                        android:backgroundTint="#FFEBD9"
-                        android:elevation="0dp"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="8dp" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewScanResults"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
                 </androidx.gridlayout.widget.GridLayout>
 
