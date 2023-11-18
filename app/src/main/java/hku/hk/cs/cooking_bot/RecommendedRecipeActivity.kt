@@ -15,7 +15,7 @@ import com.google.gson.Gson
 
 class RecommendedRecipeActivity : AppCompatActivity() {
 
-    data class FoodData(val food_name: String, val ingredients: List<String>, val total_ingredients: Int, val serving_size: Int, val preparation_time: Int, val cooking_time: Int, val how_to_cook: String)
+    data class FoodData(val food_name: String, val ingredients: List<String>, val total_ingredients: Int, val serving_size: Int, val preparation_time: Int, val cooking_time: Int, val how_to_cook: String, val image_path: String)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +25,7 @@ class RecommendedRecipeActivity : AppCompatActivity() {
         val save_view = findViewById(R.id.saveView) as LinearLayout
         val bookmark = findViewById(R.id.bookmarkIcon) as ImageView
         val save_text = findViewById(R.id.saveText) as TextView
+
         var saveButton_status = false
 
         val selectedFoodDataJson = intent.getStringExtra("selected_food_data")
@@ -41,6 +42,16 @@ class RecommendedRecipeActivity : AppCompatActivity() {
         servingSizeTextView.text = "Serving size: " + selectedFoodData.serving_size.toString() + " portions"
         prepTimeTextView.text = "Prep time: " + selectedFoodData.preparation_time.toString() + " mins"
         cookingTimeTextView.text = "Cooking time: " + selectedFoodData.cooking_time.toString() + " mins"
+
+        val imageView = findViewById<ImageView>(R.id.imageView2)
+        val imagePath = selectedFoodData.image_path
+        if (imagePath != null && imagePath.isNotEmpty()) {
+            val drawableId = resources.getIdentifier(imagePath, "drawable", packageName)
+            if (drawableId != 0) {
+                imageView.setImageResource(drawableId)
+            }
+        }
+
 
         updateIngredientsTextView(selectedFoodData)
         updateCookingInstructions(selectedFoodData)
@@ -85,10 +96,8 @@ class RecommendedRecipeActivity : AppCompatActivity() {
             }
 
         }
-
-
-
     }
+
 
     private fun updateIngredientsTextView(selectedFoodData: FoodData) {
         val tvIngredients = findViewById<TextView>(R.id.textView15)
