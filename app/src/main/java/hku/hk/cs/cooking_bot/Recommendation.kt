@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.android.volley.Request
+import com.android.volley.Response
 
 class Recommendation : AppCompatActivity() {
     private var cook_now_button: Button? = null
@@ -43,12 +47,30 @@ class Recommendation : AppCompatActivity() {
             val foodName = matchingFoods[0]
             val foodNameFormat = foodName.substringAfter("\"").substringBefore("\"")
             textView.text = foodNameFormat
+            getDataFromAPI(foodNameFormat)
         } else {
             textView.text = "Test Food"
         }
 
+
+
     }
 
+    private fun getDataFromAPI(foodName: String) {
+        val url = "http://10.68.12.61:8080/recognize/$foodName"
+        val requestQueue = Volley.newRequestQueue(this)
+        val stringRequest = object : StringRequest(
+            Request.Method.GET, url,
+            Response.Listener<String> { response ->
+                // Handle the successful response here
+                println("Ini hasil narik data: $response")
+            },
+            Response.ErrorListener { error ->
+                error.printStackTrace()
+            }
+        ) {}
+        requestQueue.add(stringRequest)
+    }
 
 
 }
