@@ -93,16 +93,28 @@ def recognize():
 
         return jsonify({'ingredients': ingredients, 'matching_foods': matching_foods})
 
-    elif request.method == 'GET':
-        # Retrieve the scanned ingredients from your app
-        ingredients = request.args.get("ingredients")
+@app.route('/recognize/<food_name>', methods=['GET'])
+def get_food_data(food_name):
+    # Create a connection to the SQLite database
+    conn = sqlite3.connect('food_database.db')
 
-        # Compare the scanned ingredients with the foods in the database
-        matching_foods = compare_ingredients(ingredients)
-        print("Scanned Ingredients:", ingredients)
-        print("Matching Foods:", matching_foods)
+    # Create a cursor object to interact with the database
+    cursor = conn.cursor()
 
-        return jsonify({'ingredients': ingredients, 'matching_foods': matching_foods})
+    # Retrieve the food data for the specified food name
+    cursor.execute("SELECT food_name, ingredients FROM foods WHERE food_name=?", (food_name,))
+    food_data = cursor.fetchone()
+
+    # Close the database connection
+    conn.close()
+
+    if food_data is None:
+        return jsonify({'error': 'Food not found'})
+
+    food_name = food_data[0]
+    ingredients = food_data[1].split(", ")
+
+    return jsonify({'food_name': food_name, 'ingredients': ingredients})
 
 
 app.run(host="0.0.0.0", port=8080)
