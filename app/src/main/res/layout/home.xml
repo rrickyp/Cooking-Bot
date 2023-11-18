@@ -13,7 +13,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="192dp"
-            android:background="#FFE34A">
+            android:background="#FF9A3D">
 
         </FrameLayout>
 
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="50dp"
-                android:background="#FFE34A"
+                android:background="##FF9A3D"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -62,6 +62,7 @@
                             android:lineSpacingExtra="4sp"
                             android:paddingBottom="12dp"
                             android:text="Good Morning, \nYour Name"
+                            android:textColor="@color/white"
                             android:textSize="24sp"
                             android:textStyle="bold" />
 
@@ -84,6 +85,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="sans-serif-medium"
                                 android:gravity="center"
+                                android:textColor="@color/white"
                                 android:text="10:00" />
 
                         </LinearLayout>
@@ -96,6 +98,7 @@
                             android:fontFamily="sans-serif-medium"
                             android:gravity="center"
                             android:text="GMT +8, Hong Kong"
+                            android:textColor="@color/white"
                             android:textSize="10sp" />
 
 
