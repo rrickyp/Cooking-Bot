@@ -8,8 +8,10 @@ import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.MediaController
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.VideoView
 import androidx.core.content.ContextCompat
 import com.google.gson.Gson
 
@@ -56,6 +58,14 @@ class RecommendedRecipeActivity : AppCompatActivity() {
 
         updateIngredientsTextView(selectedFoodData)
         updateCookingInstructions(selectedFoodData)
+
+        val videoView = findViewById<VideoView>(R.id.videoView)
+        val videoPath = "android.resource://" + packageName + "/raw/pizza_tutorial"
+        val mediaController = MediaController(this)
+        mediaController.setAnchorView(videoView)
+        videoView.setVideoPath(videoPath)
+        videoView.setMediaController(mediaController)
+        videoView.start()
 
         back_text_view!!.setOnClickListener {
 
