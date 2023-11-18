@@ -5,13 +5,17 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.google.gson.Gson
 
 class RecommendedRecipeActivity : AppCompatActivity() {
+
+    data class FoodData(val food_name: String, val ingredients: List<String>, val total_ingredients: Int, val serving_size: Int, val preparation_time: Int, val cooking_time: Int, val how_to_cook: String)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +27,23 @@ class RecommendedRecipeActivity : AppCompatActivity() {
         val save_text = findViewById(R.id.saveText) as TextView
         var saveButton_status = false
 
+        val selectedFoodDataJson = intent.getStringExtra("selected_food_data")
+        val selectedFoodData = Gson().fromJson(selectedFoodDataJson, FoodData::class.java)
+
+        val foodNameTextView = findViewById<TextView>(R.id.textView14)
+        val totalIngredientsTextView = findViewById<TextView>(R.id.textView23)
+        val servingSizeTextView = findViewById<TextView>(R.id.textView24)
+        val prepTimeTextView = findViewById<TextView>(R.id.textView25)
+        val cookingTimeTextView = findViewById<TextView>(R.id.textView26)
+
+        foodNameTextView.text = selectedFoodData.food_name
+        totalIngredientsTextView.text = selectedFoodData.total_ingredients.toString() + " ingredients"
+        servingSizeTextView.text = "Serving size: " + selectedFoodData.serving_size.toString() + " portions"
+        prepTimeTextView.text = "Prep time: " + selectedFoodData.preparation_time.toString() + " mins"
+        cookingTimeTextView.text = "Cooking time: " + selectedFoodData.cooking_time.toString() + " mins"
+
+        updateIngredientsTextView(selectedFoodData)
+        updateCookingInstructions(selectedFoodData)
 
         back_text_view!!.setOnClickListener {
 
@@ -67,6 +88,34 @@ class RecommendedRecipeActivity : AppCompatActivity() {
 
 
 
+    }
+
+    private fun updateIngredientsTextView(selectedFoodData: FoodData) {
+        val tvIngredients = findViewById<TextView>(R.id.textView15)
+        val tvRemainingIngredients = findViewById<TextView>(R.id.textView16)
+        val bulletPoint = "\u2022 " // Bullet point character
+        val maxVisibleIngredients = 5
+
+        if (selectedFoodData.ingredients.size > maxVisibleIngredients) {
+            val visibleIngredients = selectedFoodData.ingredients.take(maxVisibleIngredients)
+            val remainingIngredients = selectedFoodData.ingredients.drop(maxVisibleIngredients)
+            val visibleIngredientsText = visibleIngredients.joinToString("\n") { "$bulletPoint$it" }
+            val remainingIngredientsText = remainingIngredients.joinToString("\n") { "$bulletPoint$it" }
+
+            tvIngredients.text = visibleIngredientsText
+            tvRemainingIngredients.text = remainingIngredientsText
+            tvRemainingIngredients.visibility = View.VISIBLE
+        } else {
+            val ingredientsText = selectedFoodData.ingredients.joinToString("\n") { "$bulletPoint$it" }
+            tvIngredients.text = ingredientsText
+            tvRemainingIngredients.visibility = View.GONE
+        }
+    }
+
+    private fun updateCookingInstructions(selectedFoodData: FoodData) {
+        val instructionsTv = findViewById<TextView>(R.id.textView21)
+        val instructionsText = selectedFoodData.how_to_cook.replace(", ", "\n")
+        instructionsTv.text = instructionsText
     }
 
 }
