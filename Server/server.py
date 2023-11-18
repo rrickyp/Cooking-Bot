@@ -86,6 +86,9 @@ def recognize():
         ingredients = [eachObject["name"] for eachObject in detections]
         ingredients.append("cheese")
         ingredients.append("BEEEEEEEEEEEEEEEEEEEEEEEEEF")
+        ingredients.append("Tomato")
+        ingredients.append("Bread")
+        ingredients.append("Bread2")
 
         # Compare the scanned ingredients with the foods in the database
         matching_foods = compare_ingredients(ingredients)
