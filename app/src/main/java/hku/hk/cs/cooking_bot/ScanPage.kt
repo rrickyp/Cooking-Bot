@@ -17,6 +17,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import java.io.ByteArrayOutputStream
 import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 
 class ScanPage : AppCompatActivity() {
@@ -74,14 +75,29 @@ class ScanPage : AppCompatActivity() {
         val stringRequest = object : StringRequest(
             Request.Method.POST, url,
             Response.Listener<String> { response ->
-                val jsonArray = JSONArray(response)
-                // insert the name into the array
-                println(jsonArray.length())
-                for (i in 0 until jsonArray.length()){
-                    val jsonObj = jsonArray.getJSONObject(i)
-                    ingredients.add(jsonObj.get("name") as String)
+                try {
+                    val jsonObject = JSONObject(response)
+                    val ingredientsArray = jsonObject.getJSONArray("ingredients")
+                    val matchingFoodsArray = jsonObject.getJSONArray("matching_foods")
+
+                    val ingredients = ArrayList<String>()
+                    val matchingFoods = ArrayList<String>()
+
+                    for (i in 0 until ingredientsArray.length()) {
+                        ingredients.add(ingredientsArray.getString(i))
+                    }
+
+                    for (i in 0 until matchingFoodsArray.length()) {
+                        matchingFoods.add(matchingFoodsArray.getString(i))
+                    }
+
+                    println("Ingredients: $ingredients")
+                    println("Matching Foods: $matchingFoods")
+
+                    updateIngredientsTextView(ingredients) // Update the UI with the retrieved ingredients
+                } catch (e: JSONException) {
+                    e.printStackTrace()
                 }
-                println(ingredients)
             },
             Response.ErrorListener { error ->
                 error.printStackTrace()
