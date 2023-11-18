@@ -44,7 +44,7 @@
                             android:letterSpacing="0.025"
                             android:lineSpacingExtra="4sp"
                             android:paddingBottom="12dp"
-                            android:text="Good Morning, \nYour Name"
+                            android:text="Good Morning, \nJennie Chan"
                             android:textColor="@color/white"
                             android:textSize="24sp"
                             android:textStyle="bold" />
