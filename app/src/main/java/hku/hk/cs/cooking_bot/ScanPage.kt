@@ -1,14 +1,15 @@
 package hku.hk.cs.cooking_bot
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -17,7 +18,6 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import java.io.ByteArrayOutputStream
-import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -27,10 +27,11 @@ class ScanPage : AppCompatActivity() {
     private var btn_upload: Button? = null
     private var generate_recipe: LinearLayout? = null
     private var bitmap: Bitmap? = null
-    private var url:String? = "http://172.29.0.83:8080/recognize"
+    private var url:String? = "http://10.68.12.61:8080/recognize"
     private var ingredients = arrayListOf<String>()
     private var imageView: ImageView? = null
     private var matchingFoods = ArrayList<String>()
+    private var scanSuccessful: Boolean? = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,13 +51,16 @@ class ScanPage : AppCompatActivity() {
         }
 
         generate_recipe = findViewById(R.id.generateButton) as LinearLayout
+        updateGenerateButtonState()
 
         generate_recipe!!.setOnClickListener {
 
             // setContentView(R.layout.activity_recommendation);
-            val goToRecommendation = Intent(this, Recommendation::class.java)
-            goToRecommendation.putStringArrayListExtra("matchingFoods", matchingFoods)
-            startActivity(goToRecommendation)
+            if (scanSuccessful == true) {
+                val goToRecommendation = Intent(this, Recommendation::class.java)
+                goToRecommendation.putStringArrayListExtra("matchingFoods", matchingFoods)
+                startActivity(goToRecommendation)
+            }
 
         }
 
@@ -82,6 +86,16 @@ class ScanPage : AppCompatActivity() {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), 7)
     }
 
+    private fun updateGenerateButtonState() {
+        if (scanSuccessful == true) {
+            generate_recipe!!.isClickable = true
+            generate_recipe!!.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FF9A3D"))
+        } else {
+            generate_recipe!!.isClickable = false
+            generate_recipe!!.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#ECECEC"))
+        }
+    }
+
     private fun uploadImage() {
         val stringRequest = object : StringRequest(
             Request.Method.POST, url,
@@ -105,7 +119,9 @@ class ScanPage : AppCompatActivity() {
                     println("Ingredients: $ingredients")
                     println("Matching Foods: $matchingFoods")
 
+                    scanSuccessful = true
                     updateIngredientsTextView(ingredients) // Update the UI with the retrieved ingredients
+                    updateGenerateButtonState()
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
