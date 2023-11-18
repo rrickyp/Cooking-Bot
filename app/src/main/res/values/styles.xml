@@ -3,7 +3,6 @@
     <!-- Base application theme -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize other theme attributes as needed -->
-        <item name="android:background">#FFFFFF</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:letterSpacing">0.03</item>
         <item name="android:textColor">#444444</item>
