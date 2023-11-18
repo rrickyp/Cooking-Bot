@@ -10,6 +10,7 @@ import android.util.Base64
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.android.volley.Request
 import com.android.volley.Response
@@ -54,6 +55,14 @@ class ScanPage : AppCompatActivity() {
             // setContentView(R.layout.activity_recommendation);
             val goToReccomendation = Intent(this, Recommendation::class.java)
             startActivity(goToReccomendation)
+
+        }
+
+        val click_cancel_button = findViewById(R.id.cancel_button) as TextView
+        click_cancel_button.setOnClickListener {
+
+            val goBackToHome = Intent(this, Home::class.java)
+            startActivity(goBackToHome)
 
         }
 

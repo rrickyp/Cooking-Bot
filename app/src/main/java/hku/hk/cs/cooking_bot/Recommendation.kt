@@ -31,6 +31,14 @@ class Recommendation : AppCompatActivity() {
 
         }
 
+        val saved_button = findViewById(R.id.saved_icon) as ImageView
+            saved_button.setOnClickListener {
+
+            val goToSavedActivity = Intent(this, SavedActivity::class.java)
+            startActivity(goToSavedActivity)
+
+        }
+
     }
 
 

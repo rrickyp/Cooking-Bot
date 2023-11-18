@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 
 class RecommendedRecipeActivity : AppCompatActivity() {
 
@@ -40,10 +41,10 @@ class RecommendedRecipeActivity : AppCompatActivity() {
                 Toast.makeText(this, "Recipe Unsaved!",Toast.LENGTH_SHORT).show()
 
                 // change the bookmarkIcon imageView and the color of the saveView
-                // GRIZ tolong bantu atur warnanya ya
                 save_view.getBackground().setTint(Color.parseColor("#FF9A3D"));
                 save_text.setTextColor(Color.parseColor("#FFFFFF"))
                 save_text.setText("Save Recipe")
+                bookmark.setImageResource(R.drawable.bookmark)
 
                 saveButton_status = false
 
@@ -57,6 +58,7 @@ class RecommendedRecipeActivity : AppCompatActivity() {
                 save_view.getBackground().setTint(Color.parseColor("#E5E1E1"));
                 save_text.setTextColor(Color.parseColor("#000000"))
                 save_text.setText("Recipe Saved")
+                bookmark.setImageResource(R.drawable.savedfilled)
 
                 saveButton_status = true
             }
