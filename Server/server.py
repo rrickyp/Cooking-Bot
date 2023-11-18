@@ -112,7 +112,7 @@ def get_food_data(food_name):
     cursor = conn.cursor()
 
     # Retrieve the food data for the specified food name
-    cursor.execute("SELECT food_name, ingredients FROM foods WHERE food_name=?", (food_name,))
+    cursor.execute("SELECT food_name, ingredients, total_ingredients, serving_size, preparation_time, cooking_time, how_to_cook, image_path FROM foods WHERE food_name=?", (food_name,))
     food_data = cursor.fetchone()
 
     # Close the database connection
@@ -123,8 +123,23 @@ def get_food_data(food_name):
 
     food_name = food_data[0]
     ingredients = food_data[1].split(", ")
+    total_ingredients = food_data[2]
+    serving_size = food_data[3]
+    preparation_time = food_data[4]
+    cooking_time = food_data[5]
+    how_to_cook = food_data[6]
+    image_path = food_data[7]
 
-    return jsonify({'food_name': food_name, 'ingredients': ingredients})
+    return jsonify({
+        'food_name': food_name,
+        'ingredients': ingredients,
+        'total_ingredients': total_ingredients,
+        'serving_size': serving_size,
+        'preparation_time': preparation_time,
+        'cooking_time': cooking_time,
+        'how_to_cook': how_to_cook,
+        'image_path': image_path
+    })
 
 
 app.run(host="0.0.0.0", port=8080)
