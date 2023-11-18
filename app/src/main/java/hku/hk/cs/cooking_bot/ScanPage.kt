@@ -30,6 +30,7 @@ class ScanPage : AppCompatActivity() {
     private var url:String? = "http://10.68.170.110:8080/recognize"
     private var ingredients = arrayListOf<String>()
     private var imageView: ImageView? = null
+    private var matchingFoods = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +54,9 @@ class ScanPage : AppCompatActivity() {
         generate_recipe!!.setOnClickListener {
 
             // setContentView(R.layout.activity_recommendation);
-            val goToReccomendation = Intent(this, Recommendation::class.java)
-            startActivity(goToReccomendation)
+            val goToRecommendation = Intent(this, Recommendation::class.java)
+            goToRecommendation.putStringArrayListExtra("matchingFoods", matchingFoods)
+            startActivity(goToRecommendation)
 
         }
 
@@ -89,8 +91,8 @@ class ScanPage : AppCompatActivity() {
                     val ingredientsArray = jsonObject.getJSONArray("ingredients")
                     val matchingFoodsArray = jsonObject.getJSONArray("matching_foods")
 
-                    val ingredients = ArrayList<String>()
-                    val matchingFoods = ArrayList<String>()
+                    ingredients.clear()
+                    matchingFoods.clear()
 
                     for (i in 0 until ingredientsArray.length()) {
                         ingredients.add(ingredientsArray.getString(i))
