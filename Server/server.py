@@ -91,7 +91,7 @@ def recognize():
         ingredients = list(set(ingredients))
 
         additional_ingredients = [
-            "Flour", "Tomato", "Cheese", "Mushroom", "Spinach", "Pepper"
+            "flour", "tomato", "cheese", "mushroom", "spinach", "pepper"
         ]
         ingredients.extend(additional_ingredients)
 
