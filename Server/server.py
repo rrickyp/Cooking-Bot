@@ -69,7 +69,7 @@ def recognize_objects(image):
     print(labels)
     return labels
 
-@app.route('/recognize', methods=['POST', 'GET'])
+@app.route('/recognize', methods=['POST'])
 def recognize():
     if request.method == 'POST':
         img = request.form.get("image")

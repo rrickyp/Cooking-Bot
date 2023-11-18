@@ -26,7 +26,7 @@ food_data = [
     ('Pizza', '300g Dough, 200g Tomato Sauce, 200g Cheese, Toppings', 4, 4, 30, 20, '1. Prepare the pizza dough, 2. Add tomato sauce and toppings, 3. Bake in the oven.', 'app/src/main/res/drawable/pizza.jpg'),
     ('Noodle', '200g Noodles, Vegetables, 300g Meat, Sauce', 5, 2, 15, 10, '1. Boil the noodles, 2. Cook the vegetables and meat, 3. Mix with sauce.', 'app/src/main/res/drawable/noodle.jpg'),
     ('Rice Cake', '250g Rice Flour, 100g Sugar, Toppings', 3, 6, 40, 30, '1. Mix rice flour and sugar, 2. Steam the mixture, 3. Add toppings.', 'app/src/main/res/drawable/ricecake.jpg'),
-    ('Burger', 'Bun, Patty, Cheese, Lettuce, Tomato', 5, 1, 25, 15, '1. Cook the patty, 2. Assemble the burger with bun, patty, and toppings.', 'app/src/main/res/drawable/burger.jpg'),
+    ('Burger', 'Bun, Patty, Cheese, Lettuce, Tomato, Pickle, Pepper, Egg', 8, 1, 25, 15, '1. Cook the patty, 2. Assemble the burger with bun, patty, and toppings.', 'app/src/main/res/drawable/burger.jpg'),
     ('Sushi', 'Rice, Fish, Seaweed, Vegetables', 4, 8, 35, 25, '1. Cook rice and season with vinegar, 2. Prepare fish, seaweed, and vegetables, 3. Roll ingredients in seaweed.', 'app/src/main/res/drawable/sushi.jpg'),
     ('Pasta', '250g Spaghetti, Tomato Sauce, Garlic, Olive Oil, Parmesan Cheese', 5, 4, 20, 15, '1. Boil the pasta, 2. Prepare the tomato sauce with garlic and olive oil, 3. Mix the cooked pasta with the sauce, 4. Serve with grated Parmesan cheese.', 'app/src/main/res/drawable/pasta.jpg'),
     ('Salad', 'Lettuce, Tomatoes, Cucumbers, Onions, Dressing', 4, 2, 10, 7, '1. Wash and chop the lettuce, tomatoes, cucumbers, and onions, 2. Toss the vegetables with dressing, 3. Serve chilled.', 'app/src/main/res/drawable/salad.jpg'),
