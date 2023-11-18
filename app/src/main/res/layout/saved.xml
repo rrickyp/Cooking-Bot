@@ -308,7 +308,7 @@
             android:id="@+id/menu_2"
             android:layout_width="40dp"
             android:layout_height="42dp"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="64dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -335,7 +335,7 @@
             android:id="@+id/menu_3"
             android:layout_width="40dp"
             android:layout_height="42dp"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="64dp"
             android:gravity="center"
             android:orientation="vertical">
 

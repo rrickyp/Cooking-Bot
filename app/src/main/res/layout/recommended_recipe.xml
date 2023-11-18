@@ -38,6 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:background="#FFFFFF"
                     android:padding="20dp">
 
                     <TextView
@@ -160,7 +161,7 @@
     <LinearLayout
         android:id="@+id/save_button"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="96dp"
         android:background="#FAFAFA"
         android:elevation="4dp"
         android:gravity="center"
@@ -176,13 +177,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
+            android:background="@drawable/corner"
+            android:backgroundTint="#FF9A3D"
             android:orientation="horizontal"
-            android:paddingVertical="4dp">
+            android:paddingVertical="10dp">
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+
                 android:src="@drawable/bookmark" />
 
             <TextView
@@ -192,7 +196,7 @@
                 android:layout_marginLeft="8dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Save Recipe"
-                android:textColor="#222222"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp" />
         </LinearLayout>
 
