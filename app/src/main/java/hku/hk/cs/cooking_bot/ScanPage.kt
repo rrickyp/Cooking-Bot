@@ -25,7 +25,7 @@ class ScanPage : AppCompatActivity() {
     private var btn_camera: Button? = null
     private var btn_gallery: Button? = null
     private var btn_upload: Button? = null
-    private var generate_recipe: TextView? = null
+    private var generate_recipe: LinearLayout? = null
     private var bitmap: Bitmap? = null
     private var url:String? = "http://10.68.170.110:8080/recognize"
     private var ingredients = arrayListOf<String>()
@@ -49,7 +49,7 @@ class ScanPage : AppCompatActivity() {
             uploadImage()
         }
 
-        generate_recipe = findViewById(R.id.generateButton) as TextView
+        generate_recipe = findViewById(R.id.generateButton) as LinearLayout
 
         generate_recipe!!.setOnClickListener {
 
