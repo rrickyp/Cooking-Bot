@@ -38,7 +38,11 @@ def compare_ingredients(ingredients):
         food_ingredients = [ingredient.lower() for ingredient in food[1].split(", ")]
 
         # Count the number of matching ingredients
-        matching_count = sum(ingredient in food_ingredients for ingredient in ingredients)
+        matching_count = 0
+        for ingredient in ingredients:
+            for food_ingredient in food_ingredients:
+                if ingredient in food_ingredient:
+                    matching_count += 1
 
         # Add the food and its matching count to the list
         matching_foods.append((food_name, matching_count))
