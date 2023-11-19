@@ -17,7 +17,7 @@ import com.google.gson.Gson
 
 class RecommendedRecipeActivity : AppCompatActivity() {
 
-    data class FoodData(val food_name: String, val ingredients: List<String>, val total_ingredients: Int, val serving_size: Int, val preparation_time: Int, val cooking_time: Int, val how_to_cook: String, val image_path: String)
+    data class FoodData(val food_name: String, val ingredients: List<String>, val total_ingredients: Int, val serving_size: Int, val preparation_time: Int, val cooking_time: Int, val how_to_cook: String, val image_path: String, val video_path: String)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +60,9 @@ class RecommendedRecipeActivity : AppCompatActivity() {
         updateCookingInstructions(selectedFoodData)
 
         val videoView = findViewById<VideoView>(R.id.videoView)
-        val videoPath = "android.resource://" + packageName + "/raw/pizza_tutorial"
+        val videoName = selectedFoodData?.video_path
+        println("videoName: $videoName")
+        val videoPath = "android.resource://" + packageName + "/raw/" + videoName
         val mediaController = MediaController(this)
         mediaController.setAnchorView(videoView)
         videoView.setVideoPath(videoPath)
