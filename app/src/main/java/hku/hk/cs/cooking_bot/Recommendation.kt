@@ -27,12 +27,14 @@ class Recommendation : AppCompatActivity() {
     )
 
     private var cook_now_button: Button? = null
+    private var cook_now_button_1: TextView? = null
     private var selected_food_data: FoodData? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recommendation)
         cook_now_button = findViewById(R.id.button2)
+        cook_now_button_1 = findViewById(R.id.cook_now_button_1)
 
         val home_view = findViewById(R.id.home_icon) as ImageView
 
@@ -70,7 +72,14 @@ class Recommendation : AppCompatActivity() {
                 startActivity(goToRecipe)
             }
         }
+
+//        Further improvement: add loop to iterate through other btns & access database
+        cook_now_button_1?.setOnClickListener {
+            val goToRecipe = Intent(this, RecommendedRecipeActivity::class.java)
+            startActivity(goToRecipe)
+        }
     }
+
 
     private fun getDataFromAPI(foodName: String) {
         val url = "http://10.68.12.61:8080/recognize/$foodName"
