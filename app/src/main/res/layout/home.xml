@@ -216,7 +216,7 @@
                         android:layout_marginEnd="20dp"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/pizza"
+                        android:src="@drawable/kebab"
                         app:shapeAppearanceOverlay="@style/RoundedSquare" />
 
                     <LinearLayout
@@ -231,7 +231,7 @@
                             android:layout_marginBottom="3dp"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="left"
-                            android:text="20 mins ∙ 10 ingredients ∙ 30 Oct"
+                            android:text="25 mins ∙ 7 ingredients ∙ 16 Oct"
                             android:textColor="#ADADAD"
                             android:textSize="10dp" />
 
@@ -242,7 +242,7 @@
                             android:layout_marginBottom="3dp"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="left"
-                            android:text="Food Name"
+                            android:text="Kebab"
                             android:textSize="14dp" />
 
                         <TextView
@@ -251,7 +251,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="left"
-                            android:text="Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef"
+                            android:text="Pita Bread ∙ Chicken Thighs ∙ Olive Oil ∙ Yoghurt ∙ Paprika ∙ Tomato slices ∙ Garlic cloves minced"
                             android:textColor="#ADADAD"
                             android:textSize="10dp" />
 
@@ -272,7 +272,7 @@
                         android:layout_marginEnd="20dp"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/pizza"
+                        android:src="@drawable/burger"
                         app:shapeAppearanceOverlay="@style/RoundedSquare" />
 
                     <LinearLayout
@@ -287,7 +287,7 @@
                             android:layout_marginBottom="3dp"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="left"
-                            android:text="20 mins ∙ 10 ingredients ∙ 30 Oct"
+                            android:text="25 mins ∙ 12 ingredients ∙ 30 Oct"
                             android:textColor="#ADADAD"
                             android:textSize="10dp" />
 
@@ -298,7 +298,7 @@
                             android:layout_marginBottom="3dp"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="left"
-                            android:text="Food Name"
+                            android:text="Cheeseburger"
                             android:textSize="14dp" />
 
                         <TextView
@@ -307,7 +307,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="left"
-                            android:text="Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef"
+                            android:text="Ground Chuck ∙ Onion Powder ∙ Teaspoon Salt ∙ Black Pepper ∙ Cheese ∙ Burger Buns ∙ Ketchup ∙ Mayonnaise ∙ Thousand Island Dressing ∙ Sliced Tomato ∙ Fresh Lettuce Leaves ∙ Beef"
                             android:textColor="#ADADAD"
                             android:textSize="10dp" />
 
@@ -328,7 +328,7 @@
                         android:layout_marginEnd="20dp"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/pizza"
+                        android:src="@drawable/pasta"
                         app:shapeAppearanceOverlay="@style/RoundedSquare" />
 
                     <LinearLayout
@@ -343,7 +343,7 @@
                             android:layout_marginBottom="3dp"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="left"
-                            android:text="20 mins ∙ 10 ingredients ∙ 30 Oct"
+                            android:text="15 mins ∙ 5 ingredients ∙ 30 Oct"
                             android:textColor="#ADADAD"
                             android:textSize="10dp" />
 
@@ -354,7 +354,7 @@
                             android:layout_marginBottom="3dp"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="left"
-                            android:text="Food Name"
+                            android:text="Pasta"
                             android:textSize="14dp" />
 
                         <TextView
@@ -363,7 +363,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-medium"
                             android:gravity="left"
-                            android:text="Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef ∙ Beef"
+                            android:text="All Purpose Flour ∙ Eggs ∙ Olive Oil ∙ Cheese ∙ Beef"
                             android:textColor="#ADADAD"
                             android:textSize="10dp" />
 
