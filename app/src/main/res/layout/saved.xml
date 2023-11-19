@@ -66,7 +66,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/test" />
+                            android:src="@drawable/kebab" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -82,7 +82,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
-                            android:text="TextView"
+                            android:text="Kebab"
                             android:textSize="16sp"
                             android:fontFamily="sans-serif-medium" />
 
@@ -91,13 +91,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
-                            android:text="TextView" />
+                            android:text="Prep Time: 15 mins" />
 
                         <TextView
                             android:id="@+id/textView3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="Cook Time: 10 mins" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -119,7 +119,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/test" />
+                            android:src="@drawable/burger" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -135,7 +135,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
-                            android:text="TextView"
+                            android:text="Cheeseburger"
                             android:textSize="16sp"
                             android:fontFamily="sans-serif-medium" />
 
@@ -144,13 +144,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
-                            android:text="TextView" />
+                            android:text="Prep Time: 15 min" />
 
                         <TextView
                             android:id="@+id/textView6"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="Cook Time: 10 mins" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -172,7 +172,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/test" />
+                            android:src="@drawable/pasta" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -188,7 +188,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
-                            android:text="TextView"
+                            android:text="Pasta"
                             android:textSize="16sp"
                             android:fontFamily="sans-serif-medium" />
 
@@ -197,13 +197,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
-                            android:text="TextView" />
+                            android:text="Prep Time: 10 mins" />
 
                         <TextView
                             android:id="@+id/textView9"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="Cook Time: 5 mins" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -225,7 +225,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/test" />
+                            android:src="@drawable/pizza" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -241,7 +241,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
                             android:layout_marginBottom="4dp"
-                            android:text="TextView"
+                            android:text="Pizza"
                             android:textSize="16sp"
                             android:fontFamily="sans-serif-medium" />
 
@@ -250,13 +250,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
-                            android:text="TextView" />
+                            android:text="Prep Time: 25 mins" />
 
                         <TextView
                             android:id="@+id/textView12"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="TextView" />
+                            android:text="Cook Time: 25 mins" />
                     </LinearLayout>
                 </LinearLayout>
 

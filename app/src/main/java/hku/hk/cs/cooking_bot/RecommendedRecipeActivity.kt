@@ -59,8 +59,11 @@ class RecommendedRecipeActivity : AppCompatActivity() {
         updateIngredientsTextView(selectedFoodData)
         updateCookingInstructions(selectedFoodData)
 
+        //for cheeseburger only
         val videoView = findViewById<VideoView>(R.id.videoView)
-        val videoName = selectedFoodData?.video_path
+        //this is dynamic but since we hardcoded it no choice i will comment it
+        //val videoName = selectedFoodData?.video_path
+        val videoName = "cheesburger_vid_tutorial.mp4"
         println("videoName: $videoName")
         val videoPath = "android.resource://" + packageName + "/raw/" + videoName
         val mediaController = MediaController(this)
@@ -69,12 +72,9 @@ class RecommendedRecipeActivity : AppCompatActivity() {
         videoView.setMediaController(mediaController)
         videoView.start()
 
+
         back_text_view!!.setOnClickListener {
-
-            // setContentView(R.layout.activity_recommendation);
-            val goBackToReccomendation = Intent(this, Recommendation::class.java)
-            startActivity(goBackToReccomendation)
-
+                finish()
         }
 
 
