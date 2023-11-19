@@ -7,9 +7,9 @@
         android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/food_hub"
         android:label="Food Hub"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/food_hub"
         android:supportsRtl="true"
         android:theme="@style/Theme.CookingBot"
         tools:targetApi="31">
