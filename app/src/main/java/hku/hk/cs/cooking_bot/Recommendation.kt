@@ -58,7 +58,7 @@ class Recommendation : AppCompatActivity() {
             textView.text = foodNameFormat
             getDataFromAPI(foodNameFormat)
         } else {
-            textView.text = "Pizza"
+            textView.text = "TestFood"
         }
 
         cook_now_button?.setOnClickListener {

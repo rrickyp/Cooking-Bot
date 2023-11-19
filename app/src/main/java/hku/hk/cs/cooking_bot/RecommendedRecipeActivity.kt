@@ -70,11 +70,7 @@ class RecommendedRecipeActivity : AppCompatActivity() {
         videoView.start()
 
         back_text_view!!.setOnClickListener {
-
-            // setContentView(R.layout.activity_recommendation);
-            val goBackToReccomendation = Intent(this, Recommendation::class.java)
-            startActivity(goBackToReccomendation)
-
+                finish()
         }
 
 
