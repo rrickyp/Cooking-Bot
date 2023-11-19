@@ -39,14 +39,14 @@ class RecommendedRecipeActivity : AppCompatActivity() {
         val prepTimeTextView = findViewById<TextView>(R.id.textView25)
         val cookingTimeTextView = findViewById<TextView>(R.id.textView26)
 
-        foodNameTextView.text = selectedFoodData.food_name
-        totalIngredientsTextView.text = selectedFoodData.total_ingredients.toString() + " ingredients"
-        servingSizeTextView.text = "Serving size: " + selectedFoodData.serving_size.toString() + " portions"
-        prepTimeTextView.text = "Prep time: " + selectedFoodData.preparation_time.toString() + " mins"
-        cookingTimeTextView.text = "Cooking time: " + selectedFoodData.cooking_time.toString() + " mins"
+        foodNameTextView.text = selectedFoodData?.food_name ?: "Cheeseburger"
+        totalIngredientsTextView.text = (selectedFoodData?.total_ingredients?.toString() ?: "8") + " ingredients"
+        servingSizeTextView.text = "Serving size: " + (selectedFoodData?.serving_size?.toString() ?: "2") + " portions"
+        prepTimeTextView.text = "Prep time: " + (selectedFoodData?.preparation_time?.toString() ?: "5") + " mins"
+        cookingTimeTextView.text = "Cooking time: " + (selectedFoodData?.cooking_time?.toString() ?: "10") + " mins"
 
         val imageView = findViewById<ImageView>(R.id.imageView2)
-        val imagePath = selectedFoodData.image_path
+        val imagePath = selectedFoodData?.image_path ?: "burger"
         println("IMGPATH : $imagePath")
         if (imagePath != null && imagePath.isNotEmpty()) {
             val drawableId = resources.getIdentifier(imagePath, "drawable", packageName)
@@ -55,18 +55,17 @@ class RecommendedRecipeActivity : AppCompatActivity() {
             }
         }
 
-
-        updateIngredientsTextView(selectedFoodData)
-        updateCookingInstructions(selectedFoodData)
+        val how_to_cook_data = selectedFoodData?.how_to_cook ?: "1. Cook the patty, 2. Assemble the patty with the rest of the ingredients."
+        val ingredientsData = selectedFoodData?.ingredients ?: listOf("2 Buns", "100g Patty", "2 Slices of Cheese", "1 Leaf of Lettuce", "2 Slices of Tomato", "Ketchup", "Mustard", "100g Onion")
+        updateIngredientsTextView(ingredientsData)
+        updateCookingInstructions(how_to_cook_data)
 
         //for cheeseburger only
         val videoView = findViewById<VideoView>(R.id.videoView)
-        //this is dynamic but since we hardcoded it no choice i will comment it
-        //val videoName = selectedFoodData?.video_path
-        val videoName = "cheesburger_vid_tutorial.mp4"
-        println("videoName: $videoName")
+        val videoName = selectedFoodData?.video_path ?: "burger_vid_tutorial"
         val videoPath = "android.resource://" + packageName + "/raw/" + videoName
         val mediaController = MediaController(this)
+        println("videoName: $videoName")
         mediaController.setAnchorView(videoView)
         videoView.setVideoPath(videoPath)
         videoView.setMediaController(mediaController)
@@ -99,7 +98,6 @@ class RecommendedRecipeActivity : AppCompatActivity() {
                 Toast.makeText(this, "Recipe Saved!",Toast.LENGTH_SHORT).show()
 
                 // change the bookmarkIcon imageView and the color of the saveView
-                // GRIZ tolong bantu atur warnanya ya
                 save_view.getBackground().setTint(Color.parseColor("#E5E1E1"));
                 save_text.setTextColor(Color.parseColor("#000000"))
                 save_text.setText("Recipe Saved")
@@ -112,15 +110,15 @@ class RecommendedRecipeActivity : AppCompatActivity() {
     }
 
 
-    private fun updateIngredientsTextView(selectedFoodData: FoodData) {
+    private fun updateIngredientsTextView(ingredientsData: List<String>) {
         val tvIngredients = findViewById<TextView>(R.id.textView15)
         val tvRemainingIngredients = findViewById<TextView>(R.id.textView16)
         val bulletPoint = "\u2022 " // Bullet point character
         val maxVisibleIngredients = 5
 
-        if (selectedFoodData.ingredients.size > maxVisibleIngredients) {
-            val visibleIngredients = selectedFoodData.ingredients.take(maxVisibleIngredients)
-            val remainingIngredients = selectedFoodData.ingredients.drop(maxVisibleIngredients)
+        if (ingredientsData.size > maxVisibleIngredients) {
+            val visibleIngredients = ingredientsData.take(maxVisibleIngredients)
+            val remainingIngredients = ingredientsData.drop(maxVisibleIngredients)
             val visibleIngredientsText = visibleIngredients.joinToString("\n") { "$bulletPoint$it" }
             val remainingIngredientsText = remainingIngredients.joinToString("\n") { "$bulletPoint$it" }
 
@@ -128,15 +126,16 @@ class RecommendedRecipeActivity : AppCompatActivity() {
             tvRemainingIngredients.text = remainingIngredientsText
             tvRemainingIngredients.visibility = View.VISIBLE
         } else {
-            val ingredientsText = selectedFoodData.ingredients.joinToString("\n") { "$bulletPoint$it" }
+
+            val ingredientsText = ingredientsData.joinToString("\n") { "$bulletPoint$it" }
             tvIngredients.text = ingredientsText
             tvRemainingIngredients.visibility = View.GONE
         }
     }
 
-    private fun updateCookingInstructions(selectedFoodData: FoodData) {
+    private fun updateCookingInstructions(how_to_cook_data: String) {
         val instructionsTv = findViewById<TextView>(R.id.textView21)
-        val instructionsText = selectedFoodData.how_to_cook.replace(", ", "\n")
+        val instructionsText = how_to_cook_data.replace(", ", "\n")
         instructionsTv.text = instructionsText
     }
 
