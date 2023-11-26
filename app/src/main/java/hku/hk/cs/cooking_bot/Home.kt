@@ -6,6 +6,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class Home : AppCompatActivity() {
     private var username:String = ""
@@ -15,8 +17,17 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
         val intent = getIntent()
+        val sdf = SimpleDateFormat("hh:mm a")
+        val currentTime= sdf.format(Date())
         user_name = findViewById(R.id.user_name)
+        val time_text = findViewById<TextView>(R.id.textView2)
+        val greeting_text = findViewById<TextView>(R.id.textView1)
 
+        if (currentTime.toString().takeLast(2) == "PM"){
+            greeting_text.text = "Good Evening,"
+        }
+
+        time_text.text = currentTime
         // Get the data from the intent
         val data = intent.getStringArrayListExtra("user_data")
         // Now you can use the data
