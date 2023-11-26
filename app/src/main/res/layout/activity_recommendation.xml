@@ -103,14 +103,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#FFFFFF"
-                            android:text="100% ingredients accuracy" />
-
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#FFFFFF"
-                            android:text="0 missing ingredients" />
+                            android:text="Top ingredients accuracy!" />
 
                         <Button
                             android:id="@+id/button2"
@@ -218,21 +211,21 @@
                     android:id="@+id/home_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/HomeFilled" />
+                    android:src="@drawable/homefilled" />
 
                 <ImageView
                     android:id="@+id/saved_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="64dp"
-                    android:src="@drawable/SavedOutlined" />
+                    android:src="@drawable/savedoutlined" />
 
                 <ImageView
                     android:id="@+id/setting_icon"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_marginLeft="64dp"
-                    android:src="@drawable/profileOutlined" />
+                    android:src="@drawable/profile_outlined" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

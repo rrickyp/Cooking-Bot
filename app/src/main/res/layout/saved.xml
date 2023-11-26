@@ -301,21 +301,21 @@
                     android:id="@+id/home_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/HomeOutlined" />
+                    android:src="@drawable/homeoutlined" />
 
                 <ImageView
                     android:id="@+id/saved_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="64dp"
-                    android:src="@drawable/SavedFilled" />
+                    android:src="@drawable/savedfilled" />
 
                 <ImageView
                     android:id="@+id/setting_icon"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_marginLeft="64dp"
-                    android:src="@drawable/profileOutlined" />
+                    android:src="@drawable/profile_outlined" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

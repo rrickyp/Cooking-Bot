@@ -49,18 +49,35 @@ class Recommendation : AppCompatActivity() {
         currentActivity = this
         cook_now_button = findViewById(R.id.button2)
         otherRecommends = findViewById(R.id.flexboxRecommendations)
+
+        val intent = getIntent()
+        val data = intent.getStringArrayListExtra("user_data")
+
         val home_view = findViewById(R.id.home_icon) as ImageView
 
         home_view.setOnClickListener {
             val goBackToHome = Intent(this, Home::class.java)
+            goBackToHome.putStringArrayListExtra("user_data", data)
             startActivity(goBackToHome)
+            finish()
         }
 
         val saved_button = findViewById(R.id.saved_icon) as ImageView
         saved_button.setOnClickListener {
 
             val goToSavedActivity = Intent(this, SavedActivity::class.java)
+            goToSavedActivity.putStringArrayListExtra("user_data", data)
             startActivity(goToSavedActivity)
+            finish()
+        }
+
+        val profile_button = findViewById(R.id.setting_icon) as ImageView
+        profile_button.setOnClickListener {
+
+            val goToProfileActivity = Intent(this, ProfileActivity::class.java)
+            goToProfileActivity.putStringArrayListExtra("user_data", data)
+            startActivity(goToProfileActivity)
+            finish()
         }
 
         val textView = findViewById<TextView>(R.id.textView3)

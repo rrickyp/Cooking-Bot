@@ -56,7 +56,7 @@ class RecommendedRecipeActivity : AppCompatActivity() {
         }
 
         val how_to_cook_data = selectedFoodData?.how_to_cook ?: "1. Cook the patty, 2. Assemble the patty with the rest of the ingredients."
-        val ingredientsData = selectedFoodData?.ingredients ?: listOf("2 Buns", "100g Patty", "2 Slices of Cheese", "1 Leaf of Lettuce", "2 Slices of Tomato", "Ketchup", "Mustard", "100g Onion")
+        val ingredientsData= selectedFoodData?.ingredients ?: listOf("2 Buns", "100g Patty", "2 Slices of Cheese", "1 Leaf of Lettuce", "2 Slices of Tomato", "Ketchup", "Mustard", "100g Onion")
         updateIngredientsTextView(ingredientsData)
         updateCookingInstructions(how_to_cook_data)
 

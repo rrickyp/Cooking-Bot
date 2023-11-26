@@ -50,7 +50,7 @@ class login : AppCompatActivity() {
                         // Start the Home activity if the login is successful
                         val temp = arrayListOf<String>(username)
                         val intent = Intent(this, Home::class.java).apply {
-                            putStringArrayListExtra("data", temp)
+                            putStringArrayListExtra("user_data", temp)
                         }
                         startActivity(intent)
                     } else {

@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val temp = arrayListOf<String>("aaa")
         val intent = Intent(this, landing_page::class.java).apply {
-            putStringArrayListExtra("data", temp)
+            putStringArrayListExtra("user_data", temp)
         }
         startActivity(intent)
     }

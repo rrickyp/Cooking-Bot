@@ -10,12 +10,26 @@ class SavedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.saved)
 
-        val home_view = findViewById(R.id.home_icon) as ImageView
+        val intent = getIntent()
+        val data = intent.getStringArrayListExtra("user_data")
 
+        val home_view = findViewById(R.id.home_icon) as ImageView
         home_view.setOnClickListener {
 
             val goBackToHome = Intent(this, Home::class.java)
+            goBackToHome.putStringArrayListExtra("user_data", data)
             startActivity(goBackToHome)
+            finish()
+
+        }
+
+        val profile_button = findViewById(R.id.setting_icon) as ImageView
+        profile_button.setOnClickListener {
+
+            val goToProfileActivity = Intent(this, ProfileActivity::class.java)
+            goToProfileActivity.putStringArrayListExtra("user_data", data)
+            startActivity(goToProfileActivity)
+            finish()
 
         }
     }

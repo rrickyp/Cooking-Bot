@@ -20,10 +20,12 @@ class landing_page : AppCompatActivity() {
         loginButton!!.setOnClickListener {
             val intent = Intent(this, login::class.java)
             startActivity(intent)
+            finish()
         }
         registerButton!!.setOnClickListener {
             val intent = Intent(this, register::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

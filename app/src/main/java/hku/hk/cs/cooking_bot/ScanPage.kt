@@ -43,6 +43,10 @@ class ScanPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.scan_page)
+
+        val intent = getIntent()
+        val data = intent.getStringArrayListExtra("user_data")
+
         btn_camera = findViewById(R.id.btn_camera)
         btn_gallery = findViewById(R.id.btn_gallery)
         btn_scan = findViewById(R.id.scanButton)
@@ -64,6 +68,7 @@ class ScanPage : AppCompatActivity() {
             if (scanSuccessful == true) {
                 val goToRecommendation = Intent(this, Recommendation::class.java)
                 goToRecommendation.putStringArrayListExtra("matchingFoods", matchingFoods)
+                goToRecommendation.putStringArrayListExtra("user_data", data)
                 startActivity(goToRecommendation)
             }
         }
@@ -71,8 +76,7 @@ class ScanPage : AppCompatActivity() {
         val click_cancel_button = findViewById(R.id.cancel_button) as TextView
         click_cancel_button.setOnClickListener {
 
-            val goBackToHome = Intent(this, Home::class.java)
-            startActivity(goBackToHome)
+            finish()
 
         }
 
