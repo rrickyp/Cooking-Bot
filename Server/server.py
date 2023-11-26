@@ -91,7 +91,7 @@ def recognize():
         ingredients = list(set(ingredients))
 
         additional_ingredients = [
-            "flour", "tomato", "cheese", "mushroom", "spinach", "pepper"
+            "flour", "tomato", "cheese", "mushroom", "spinach", "pepper", "noodles", "vegetables", "meat", "sauce", "rice flour", "sugar", "toppings", "bun", "patty", "lettuce", "rice", "fish", "seaweed", "pasta", "garlic", "olive oil", "parmesan cheese", "chicken", "bell peppers", "broccoli", "soy sauce", "eggs", "veggies", "salt", "pepper", "milk", "sugar", "baking powder", "butter"
         ]
         ingredients.extend(additional_ingredients)
 
@@ -142,6 +142,55 @@ def get_food_data(food_name):
         'image_path': image_path,
         'video_path': video_path
     })
+
+@app.route('/recognizemany', methods=['POST'])
+def get_multiple_food_data():
+    # Get the array of food names from the request body
+    food_names = request.get_json()
+
+    # Create a connection to the SQLite database
+    conn = sqlite3.connect('food_database.db')
+
+    # Create a cursor object to interact with the database
+    cursor = conn.cursor()
+
+    # Initialize an empty list to store the food data
+    foods_data = []
+
+    for food_name in food_names:
+        # Retrieve the food data for the specified food name
+        cursor.execute("SELECT food_name, ingredients, total_ingredients, serving_size, preparation_time, cooking_time, how_to_cook, image_path, video_path FROM foods WHERE food_name=?", (food_name,))
+        food_data = cursor.fetchone()
+
+        if food_data is None:
+            foods_data.append({'error': f'Food {food_name} not found'})
+        else:
+            food_name = food_data[0]
+            ingredients = food_data[1].split(", ")
+            total_ingredients = food_data[2]
+            serving_size = food_data[3]
+            preparation_time = food_data[4]
+            cooking_time = food_data[5]
+            how_to_cook = food_data[6]
+            image_path = food_data[7]
+            video_path = food_data[8]
+
+            foods_data.append({
+                'food_name': food_name,
+                'ingredients': ingredients,
+                'total_ingredients': total_ingredients,
+                'serving_size': serving_size,
+                'preparation_time': preparation_time,
+                'cooking_time': cooking_time,
+                'how_to_cook': how_to_cook,
+                'image_path': image_path,
+                'video_path': video_path
+            })
+
+    # Close the database connection
+    conn.close()
+    print(foods_data)
+    return jsonify(foods_data)
 
 
 app.run(host="0.0.0.0", port=8080)
