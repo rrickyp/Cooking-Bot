@@ -25,6 +25,7 @@ import org.json.JSONException
 import org.json.JSONObject
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import hku.hk.cs.cooking_bot.data.Constants
 
 
 class ScanPage : AppCompatActivity() {
@@ -34,7 +35,7 @@ class ScanPage : AppCompatActivity() {
     private var generate_recipe: LinearLayout? = null
     private var scanSuccessful: Boolean? = false
     private var bitmap: Bitmap? = null
-    private var url:String? = "http://10.68.60.178:8080/recognize"
+    private var url:String? = "${Constants.BASE_URL}/recognize"
     private var ingredients = arrayListOf<String>()
     private var imageView: ImageView? = null
     private var matchingFoods = ArrayList<String>()
@@ -123,10 +124,6 @@ class ScanPage : AppCompatActivity() {
                     for (i in 0 until matchingFoodsArray.length()) {
                         matchingFoods.add(matchingFoodsArray.getString(i))
                     }
-
-                    println("Ingredients: $ingredients")
-                    println("Matching Foods: $matchingFoods")
-
                     scanSuccessful = true
                     updateIngredientsTextView(ingredients) // Update the UI with the retrieved ingredients
                     updateGenerateButtonState()

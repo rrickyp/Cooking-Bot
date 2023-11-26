@@ -21,6 +21,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.google.android.flexbox.FlexboxLayout
 import com.google.gson.Gson
+import hku.hk.cs.cooking_bot.data.Constants
 import org.json.JSONArray
 
 class Recommendation : AppCompatActivity() {
@@ -39,7 +40,6 @@ class Recommendation : AppCompatActivity() {
     )
 
     private var cook_now_button: Button? = null
-    private var cook_now_button_1: TextView? = null
     private var selected_food_data: FoodData? = null
     private var selected_food: FoodData? = null
 
@@ -89,12 +89,10 @@ class Recommendation : AppCompatActivity() {
         val textView = findViewById<TextView>(R.id.textView3)
 
         val matchingFoods = intent.getStringArrayListExtra("matchingFoods")
-        println("matchingfood: $matchingFoods")
         if (matchingFoods != null && matchingFoods.isNotEmpty()) {
             val foodName = matchingFoods[0]
             val foodNameFormat = foodName.substringAfter("\"").substringBefore("\"")
             textView.text = foodNameFormat
-            println(foodNameFormat)
             getDataFromAPI(foodNameFormat)
             val foodNames = mutableListOf<String>()
             for (i in 1 until matchingFoods.size) {
@@ -112,7 +110,8 @@ class Recommendation : AppCompatActivity() {
                 val jsonSelectedFoodData = Gson().toJson(selected_food)
                 val goToRecipe = Intent(this, RecommendedRecipeActivity::class.java)
                 goToRecipe.putExtra("selected_food_data", jsonSelectedFoodData)
-                println("jsonselecteddata: $jsonSelectedFoodData")
+                val temp = arrayListOf<String>(username)
+                goToRecipe.putExtra("user_data", temp)
                 startActivity(goToRecipe)
             }
         }
@@ -121,7 +120,7 @@ class Recommendation : AppCompatActivity() {
 
 
     private fun getDataFromAPI(foodName: String) {
-        val url = "http://10.68.60.178:8080/recognize/$foodName"
+        val url = "${Constants.BASE_URL}/recognize/$foodName"
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest = object : StringRequest(
             Method.GET, url,
@@ -130,7 +129,6 @@ class Recommendation : AppCompatActivity() {
                 val foodDataJson = response
                 val foodData = Gson().fromJson(foodDataJson, FoodData::class.java)
                 selected_food = foodData
-                println("selectedfooddata: $selected_food")
 
                 val imageView = findViewById<ImageView>(R.id.imageView)
                 val imagePath = selected_food?.image_path
@@ -156,64 +154,8 @@ class Recommendation : AppCompatActivity() {
         ) {}
         requestQueue.add(stringRequest)
     }
-//    private fun getOtherRecommendationFromAPI(foodName: String) {
-//        val url = "http://10.68.60.178:8080/recognize/$foodName"
-//        val requestQueue = Volley.newRequestQueue(this)
-//        val stringRequest = object : StringRequest(
-//            Method.GET, url,
-//            Response.Listener<String> { response ->
-//                // Handle the successful response here
-//                val foodDataJson = response
-//                val foodData = Gson().fromJson(foodDataJson, FoodData::class.java)
-//                selected_food_data = foodData
-//                println("aaaaaaaa: ${selected_food_data}")
-//                val imageName = selected_food_data?.image_path // "pizza"
-//                val resId = resources.getIdentifier(imageName, "drawable", packageName)
-//
-//                val density = resources.displayMetrics.density
-//                val sizeInDp = 150
-//                val marginInDp = 10
-//                val sizeInPx = (sizeInDp * density).toInt()
-//                val marginInPx = (marginInDp * density).toInt()
-//
-//                val params = LinearLayout.LayoutParams(sizeInPx, LinearLayout.LayoutParams.WRAP_CONTENT).apply {
-//                    setMargins(marginInPx, marginInPx, marginInPx, marginInPx)
-//                }
-//
-//                val heightInDp = 120
-//                val heightInPx = (heightInDp * density).toInt()
-//
-//                val imageView = ImageView(this).apply {
-//                    layoutParams = ViewGroup.LayoutParams(
-//                        ViewGroup.LayoutParams.WRAP_CONTENT,
-//                        heightInPx
-//                    )
-//                    setImageResource(resId)
-//                    if (resId != 0) {
-//                        setImageResource(resId)
-//                        println(resId)
-//                    }
-//                    else {
-//                        setImageResource(2131165432)
-//                    }
-//                }
-//
-//                val linearLayout = LinearLayout(this).apply {
-//                    orientation = LinearLayout.VERTICAL
-//                    layoutParams = params
-//                    addView(imageView)
-//                }
-//
-//                otherRecommends?.addView(linearLayout)
-//            },
-//            Response.ErrorListener { error ->
-//                error.printStackTrace()
-//            }
-//        ) {}
-//        requestQueue.add(stringRequest)
-//    }
 private fun getOtherRecommendationFromAPI(foodNames: Array<String>) {
-    val url = "http://10.68.60.178:8080/recognizemany"
+    val url = "${Constants.BASE_URL}/recognizemany"
     val requestQueue = Volley.newRequestQueue(this)
     val jsonArrayRequest = object : JsonArrayRequest(
         Method.POST, url, JSONArray(foodNames),
@@ -225,7 +167,6 @@ private fun getOtherRecommendationFromAPI(foodNames: Array<String>) {
                     val foodDataJson = it.getJSONObject(i).toString()
                     val foodData = Gson().fromJson(foodDataJson, FoodData::class.java)
                     selected_food_data = foodData
-                    println("aaaaaaaa: ${selected_food_data}")
                     val imageName = selected_food_data?.image_path // "pizza"
                     val resId = resources.getIdentifier(imageName, "drawable", packageName)
 
@@ -251,7 +192,6 @@ private fun getOtherRecommendationFromAPI(foodNames: Array<String>) {
 
                         if (resId != 0) {
                             setImageResource(resId)
-                            println(resId)
                         }
                         else {
                             val notfound = resources.getIdentifier("food_hub", "drawable", packageName)
@@ -330,7 +270,6 @@ private fun getOtherRecommendationFromAPI(foodNames: Array<String>) {
                             val jsonSelectedFoodData = Gson().toJson(selected_food_data)
                             val goToRecipe = Intent(currentActivity, RecommendedRecipeActivity::class.java)
                             goToRecipe.putExtra("selected_food_data", jsonSelectedFoodData)
-                            println("jsonselecteddata: $jsonSelectedFoodData")
                             val temp = arrayListOf<String>(username)
                             goToRecipe.putExtra("user_data", temp)
                             startActivity(goToRecipe)

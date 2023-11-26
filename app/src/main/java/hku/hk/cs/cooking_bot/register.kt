@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import hku.hk.cs.cooking_bot.data.Constants
 import org.json.JSONObject
 
 class register : AppCompatActivity() {
@@ -37,7 +38,7 @@ class register : AppCompatActivity() {
             jsonObject.put("password", password)
 
             val queue = Volley.newRequestQueue(this)
-            val url = "http://10.68.60.178:8080/register"
+            val url = "${Constants.BASE_URL}/register"
 
             val request = JsonObjectRequest(
                 Request.Method.POST, url, jsonObject,
@@ -50,7 +51,6 @@ class register : AppCompatActivity() {
                             putStringArrayListExtra("data", temp)
                         }
                         startActivity(intent)
-                        println("haaaaaaaa")
                     } else {
                         // Show an error message if the login is unsuccessful
                         Toast.makeText(this, "Username is already taken", Toast.LENGTH_SHORT).show()

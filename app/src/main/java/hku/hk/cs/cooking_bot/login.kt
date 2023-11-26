@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import hku.hk.cs.cooking_bot.data.Constants
 import org.json.JSONObject
 
 class login : AppCompatActivity() {
@@ -40,7 +41,7 @@ class login : AppCompatActivity() {
             jsonObject.put("password", password)
 
             val queue = Volley.newRequestQueue(this)
-            val url = "http://10.68.60.178:8080/login"
+            val url = "${Constants.BASE_URL}/login"
 
             val request = JsonObjectRequest(
                 Request.Method.POST, url, jsonObject,

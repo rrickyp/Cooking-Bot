@@ -23,6 +23,7 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import hku.hk.cs.cooking_bot.data.Constants
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -99,7 +100,7 @@ class RecommendedRecipeActivity : AppCompatActivity() {
 
 
         save_view!!.setOnClickListener {
-            val url = "http://10.68.60.178:8080/save_recipe?username=${username}&recipe_id=${id}"
+            val url = "${Constants.BASE_URL}/save_recipe?username=${username}&recipe_id=${id}"
             val requestQueue = Volley.newRequestQueue(this)
             val stringRequest = object : StringRequest(
                 Method.GET, url,
@@ -184,7 +185,7 @@ class RecommendedRecipeActivity : AppCompatActivity() {
         instructionsTv.text = instructionsText
     }
     private fun getSavedRecipes(username: String, id:String) {
-        val url = "http://10.68.60.178:8080/check_save?username=${username}&recipe_id=${id}"
+        val url = "${Constants.BASE_URL}/check_save?username=${username}&recipe_id=${id}"
         val requestQueue = Volley.newRequestQueue(this)
         val stringRequest = object : StringRequest(
             Method.GET, url,

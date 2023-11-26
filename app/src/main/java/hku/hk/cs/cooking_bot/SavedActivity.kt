@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import hku.hk.cs.cooking_bot.data.Constants
 
 class SavedActivity : AppCompatActivity() {
     private var currActivity: Activity = this
@@ -57,7 +58,7 @@ class SavedActivity : AppCompatActivity() {
         }
     }
     private fun getSavedRecipes(username: String) {
-        val url = "http://10.68.60.178:8080/user_recipes?username=$username"
+        val url = "${Constants.BASE_URL}/user_recipes?username=$username"
         val requestQueue = Volley.newRequestQueue(this)
         val saved_recipe_home: androidx.gridlayout.widget.GridLayout = findViewById(R.id.saved_recipe)
         val stringRequest = object : StringRequest(
@@ -159,7 +160,6 @@ class SavedActivity : AppCompatActivity() {
                             goToRecipe.putExtra("selected_food_data", jsonSelectedFoodData)
                             val temp = arrayListOf<String>(username)
                             goToRecipe.putExtra("user_data", temp)
-                            println("jsonselecteddata: $jsonSelectedFoodData")
                             currActivity.startActivity(goToRecipe)
                         }
                     }
