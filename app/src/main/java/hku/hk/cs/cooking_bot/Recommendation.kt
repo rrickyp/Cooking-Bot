@@ -207,7 +207,7 @@ private fun getOtherRecommendationFromAPI(foodNames: Array<String>) {
                     val resId = resources.getIdentifier(imageName, "drawable", packageName)
 
                     val density = resources.displayMetrics.density
-                    val sizeInDp = 150
+                    val sizeInDp = 160
                     val marginInDp = 10
                     val sizeInPx = (sizeInDp * density).toInt()
                     val marginInPx = (marginInDp * density).toInt()
@@ -221,12 +221,11 @@ private fun getOtherRecommendationFromAPI(foodNames: Array<String>) {
 
                     val imageView = ImageView(this).apply {
                         layoutParams = LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.FILL_PARENT,
+                            LinearLayout.LayoutParams.MATCH_PARENT,
                             heightInPx
                         )
                         scaleType = ImageView.ScaleType.CENTER_CROP
-                        adjustViewBounds = true
-                        setImageResource(resId)
+
                         if (resId != 0) {
                             setImageResource(resId)
                             println(resId)
@@ -245,7 +244,7 @@ private fun getOtherRecommendationFromAPI(foodNames: Array<String>) {
                         ).apply {
                             val marginInDp = 8
                             val marginInPx = (marginInDp * density).toInt()
-                            setMargins(0, 0, 0, marginInPx)
+                            setMargins(0, marginInPx, 0, marginInPx)
                         }
                         radius = 12 * density
                         addView(imageView)
@@ -296,8 +295,8 @@ private fun getOtherRecommendationFromAPI(foodNames: Array<String>) {
                         setBackgroundResource(R.drawable.button_corner)
                         setTextColor(Color.parseColor("#FFFFFF"))
                         setPadding(0, 0, 0, 0)
-                        layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT).apply {
-                            val marginInDp = 8
+                        layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).apply {
+                            val marginInDp = 12
                             val marginInPx = (marginInDp * density).toInt()
                             setMargins(0, marginInPx, 0, marginInPx)
                         }

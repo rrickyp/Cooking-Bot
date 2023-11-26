@@ -178,7 +178,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:flexWrap="wrap"
-                    app:alignContent="flex_start">
+                    app:alignContent="flex_start"
+                    app:justifyContent="space_between">
                 </com.google.android.flexbox.FlexboxLayout>
             </ScrollView>
 

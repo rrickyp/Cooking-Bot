@@ -47,4 +47,31 @@ for food_entry in food_data:
 
 # Commit the changes and close the connection
 conn.commit()
+cursor = conn.cursor()
+
+# Create the 'users' table if it doesn't exist
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL,
+        password TEXT NOT NULL
+    )
+''')
+
+# Insert user entries
+user_data = [
+    ('user1', 'password1'),
+    ('user2', 'password2'),
+    # Add more users as needed
+]
+
+for user_entry in user_data:
+    username = user_entry[0]
+    cursor.execute("SELECT COUNT(*) FROM users WHERE username=?", (username,))
+    count = cursor.fetchone()[0]
+    if count == 0:
+        cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", user_entry)
+
+# Commit the changes and close the connection
+conn.commit()
 conn.close()

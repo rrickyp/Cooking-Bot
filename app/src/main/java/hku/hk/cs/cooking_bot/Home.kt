@@ -8,11 +8,21 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class Home : AppCompatActivity() {
+    private var username:String = ""
+    private var user_name: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
+        val intent = getIntent()
+        user_name = findViewById(R.id.user_name)
 
+        // Get the data from the intent
+        val data = intent.getStringArrayListExtra("data")
+        // Now you can use the data
+        // For example, you can print it to the log
+        username = data!![0]
+        user_name!!.setText(username)
         val see_all_button = findViewById(R.id.textView6) as TextView
         see_all_button.setOnClickListener {
 
