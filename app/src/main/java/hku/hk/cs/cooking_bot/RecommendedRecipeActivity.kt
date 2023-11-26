@@ -63,13 +63,18 @@ class RecommendedRecipeActivity : AppCompatActivity() {
         //for cheeseburger only
         val videoView = findViewById<VideoView>(R.id.videoView)
         val videoName = selectedFoodData?.video_path ?: "burger_vid_tutorial"
-        val videoPath = "android.resource://" + packageName + "/raw/" + videoName
-        val mediaController = MediaController(this)
-        println("videoName: $videoName")
-        mediaController.setAnchorView(videoView)
-        videoView.setVideoPath(videoPath)
-        videoView.setMediaController(mediaController)
-        videoView.start()
+        val videoId = resources.getIdentifier(videoName, "raw", packageName)
+
+        if (videoId != 0) {
+            val videoPath = "android.resource://$packageName/raw/$videoName"
+            val mediaController = MediaController(this)
+            mediaController.setAnchorView(videoView)
+            videoView.setVideoPath(videoPath)
+            videoView.setMediaController(mediaController)
+            videoView.start()
+        } else {
+            Toast.makeText(this, "Warning: Video not found", Toast.LENGTH_SHORT).show()
+        }
 
 
         back_text_view!!.setOnClickListener {
