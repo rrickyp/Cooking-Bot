@@ -192,5 +192,26 @@ def get_multiple_food_data():
     print(foods_data)
     return jsonify(foods_data)
 
+@app.route('/users', methods=['GET'])
+def get_all_users():
+    # Create a connection to the SQLite database
+    conn = sqlite3.connect('food_database.db')
+
+    # Create a cursor object to interact with the database
+    cursor = conn.cursor()
+
+    # Execute the query to select all users
+    cursor.execute("SELECT username, password FROM users")
+
+    # Fetch all rows from the query
+    users = cursor.fetchall()
+
+    # Close the connection
+    conn.close()
+
+    # Convert the list of tuples into a list of dictionaries for JSON serialization
+    users_list = [{'username': user[0], 'password': user[1]} for user in users]
+
+    return jsonify(users_list)
 
 app.run(host="0.0.0.0", port=8080)

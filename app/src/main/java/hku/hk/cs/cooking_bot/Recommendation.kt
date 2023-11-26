@@ -48,7 +48,6 @@ class Recommendation : AppCompatActivity() {
         setContentView(R.layout.activity_recommendation)
         currentActivity = this
         cook_now_button = findViewById(R.id.button2)
-        cook_now_button_1 = findViewById(R.id.cook_now_button_1)
         otherRecommends = findViewById(R.id.flexboxRecommendations)
         val home_view = findViewById(R.id.home_icon) as ImageView
 
@@ -95,11 +94,6 @@ class Recommendation : AppCompatActivity() {
             }
         }
 
-//        Further improvement: add loop to iterate through other btns & access database
-        cook_now_button_1?.setOnClickListener {
-            val goToRecipe = Intent(this, RecommendedRecipeActivity::class.java)
-            startActivity(goToRecipe)
-        }
     }
 
 
