@@ -214,4 +214,82 @@ def get_all_users():
 
     return jsonify(users_list)
 
+@app.route('/login', methods=['POST'])
+def login():
+    # Get the request data
+    data = request.get_json()
+
+    # Get the username and password from the request data
+    username = data.get('username')
+    password = data.get('password')
+
+    # Create a connection to the SQLite database
+    conn = sqlite3.connect('food_database.db')
+
+    # Create a cursor object to interact with the database
+    cursor = conn.cursor()
+
+    # Execute the query to select the user with the given username
+    cursor.execute("SELECT password FROM users WHERE username=?", (username,))
+
+    # Fetch the first row from the query
+    user = cursor.fetchone()
+
+    # Close the connection
+    conn.close()
+
+    if user is None:
+        # If the user is not found, return an error message
+        return jsonify({'success': False, 'error': 'Invalid username or password'}), 401
+    
+    else:
+        # If the user is found, check the password
+        if user[0] == password:
+            # If the password is correct, return a success message
+            return jsonify({'success': True})
+        else:
+            # If the password is incorrect, return an error message
+            return jsonify({'success': False, 'error': 'Invalid username or password'}), 401
+
+
+@app.route('/register', methods=['POST'])
+def register():
+    # Get the request data
+    data = request.get_json()
+
+    # Get the username and password from the request data
+    username = data.get('username')
+    password = data.get('password')
+
+    # Create a connection to the SQLite database
+    conn = sqlite3.connect('food_database.db')
+
+    # Create a cursor object to interact with the database
+    cursor = conn.cursor()
+
+    try:
+        # Execute the query to insert the new user
+        # Check if the username is already in the database
+        cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+        if cursor.fetchone() is not None:
+            # If the username is already taken, return an error message
+            return jsonify({'success': False, 'error': 'Username is already taken'}), 400
+
+        # If the username is not taken, insert the new user
+        cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
+        conn.commit()
+        cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
+
+        # Commit the changes
+        conn.commit()
+
+        # Close the connection
+        conn.close()
+
+        # Return a success message
+        return jsonify({'success': True})
+
+    except sqlite3.IntegrityError:
+        # If the username is already taken, return an error message
+        return jsonify({'success': False, 'error': 'Username is already taken'}), 400
 app.run(host="0.0.0.0", port=8080)
