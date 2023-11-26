@@ -34,7 +34,7 @@ class ScanPage : AppCompatActivity() {
     private var generate_recipe: LinearLayout? = null
     private var scanSuccessful: Boolean? = false
     private var bitmap: Bitmap? = null
-    private var url:String? = "http://10.68.12.61:8080/recognize"
+    private var url:String? = "http://10.68.23.160:8080/recognize"
     private var ingredients = arrayListOf<String>()
     private var imageView: ImageView? = null
     private var matchingFoods = ArrayList<String>()
