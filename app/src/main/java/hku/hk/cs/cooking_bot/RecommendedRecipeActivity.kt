@@ -2,36 +2,53 @@ package hku.hk.cs.cooking_bot
 
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.MediaController
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.VideoView
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import org.json.JSONArray
+import org.json.JSONObject
 
 class RecommendedRecipeActivity : AppCompatActivity() {
 
-    data class FoodData(val food_name: String, val ingredients: List<String>, val total_ingredients: Int, val serving_size: Int, val preparation_time: Int, val cooking_time: Int, val how_to_cook: String, val image_path: String, val video_path: String)
-
+    data class FoodData(val food_name: String, val ingredients: List<String>, val total_ingredients: Int, val serving_size: Int, val preparation_time: Int, val cooking_time: Int, val how_to_cook: String, val image_path: String, val video_path: String, val id: String)
+    private var id:String= ""
+    private var username:String=""
+    private var saveButton_status:Boolean =  false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.recommended_recipe)
-
+        val data = intent.getStringArrayListExtra("user_data")
+        // Now you can use the data
+        // For example, you can print it to the log
+        username = data!![0]
         val back_text_view = findViewById(R.id.back) as TextView
         val save_view = findViewById(R.id.saveView) as LinearLayout
         val bookmark = findViewById(R.id.bookmarkIcon) as ImageView
         val save_text = findViewById(R.id.saveText) as TextView
-
-        var saveButton_status = false
+        saveButton_status = false
 
         val selectedFoodDataJson = intent.getStringExtra("selected_food_data")
         val selectedFoodData = Gson().fromJson(selectedFoodDataJson, FoodData::class.java)
+        id = selectedFoodData?.id!!
+        getSavedRecipes(username, id)
 
         val foodNameTextView = findViewById<TextView>(R.id.textView14)
         val totalIngredientsTextView = findViewById<TextView>(R.id.textView23)
@@ -47,7 +64,6 @@ class RecommendedRecipeActivity : AppCompatActivity() {
 
         val imageView = findViewById<ImageView>(R.id.imageView2)
         val imagePath = selectedFoodData?.image_path ?: "burger"
-        println("IMGPATH : $imagePath")
         if (imagePath != null && imagePath.isNotEmpty()) {
             val drawableId = resources.getIdentifier(imagePath, "drawable", packageName)
             if (drawableId != 0) {
@@ -83,7 +99,30 @@ class RecommendedRecipeActivity : AppCompatActivity() {
 
 
         save_view!!.setOnClickListener {
+            val url = "http://10.68.60.178:8080/save_recipe?username=${username}&recipe_id=${id}"
+            val requestQueue = Volley.newRequestQueue(this)
+            val stringRequest = object : StringRequest(
+                Method.GET, url,
+                Response.Listener<String> { response ->
+                    // Parse the JSON response
+                    val jsonResponse = JSONObject(response)
+                    val status = jsonResponse.getBoolean("status")
 
+                    // If the status is true, set the save_text to "Unsave recipe" and change the background color of save_view
+                    if (status) {
+//                        Toast.makeText(this, "Saved list updated!",Toast.LENGTH_SHORT).show()
+                    }
+                    else {
+                        Toast.makeText(this, "Failed to update!",Toast.LENGTH_SHORT).show()
+
+                    }
+
+                },
+                Response.ErrorListener { error ->
+                    error.printStackTrace()
+                }
+            ) {}
+            requestQueue.add(stringRequest)
             if (saveButton_status == true) { // unsaved recipe
 
                 // create pop up notification
@@ -110,6 +149,7 @@ class RecommendedRecipeActivity : AppCompatActivity() {
 
                 saveButton_status = true
             }
+
 
         }
     }
@@ -142,6 +182,47 @@ class RecommendedRecipeActivity : AppCompatActivity() {
         val instructionsTv = findViewById<TextView>(R.id.textView21)
         val instructionsText = how_to_cook_data.replace(", ", "\n")
         instructionsTv.text = instructionsText
+    }
+    private fun getSavedRecipes(username: String, id:String) {
+        val url = "http://10.68.60.178:8080/check_save?username=${username}&recipe_id=${id}"
+        val requestQueue = Volley.newRequestQueue(this)
+        val stringRequest = object : StringRequest(
+            Method.GET, url,
+            Response.Listener<String> { response ->
+                // Parse the JSON response
+                val jsonResponse = JSONObject(response)
+                val status = jsonResponse.getBoolean("status")
+
+                // If the status is true, set the save_text to "Unsave recipe" and change the background color of save_view
+                if (status) {
+                    saveButton_status = true
+                    val save_text = findViewById<TextView>(R.id.saveText)
+                    val save_view = findViewById<LinearLayout>(R.id.saveView)
+//                    save_view.setBackgroundColor(Color.parseColor("#BDBDBD")) // Set to grey color
+                    save_view.getBackground().setTint(Color.parseColor("#E5E1E1"));
+                    save_text.setTextColor(Color.parseColor("#000000"))
+                    save_text.setText("Recipe Saved")
+                    val bookmark = findViewById(R.id.bookmarkIcon) as ImageView
+                    bookmark.setImageResource(R.drawable.savedfilled)
+                }
+                else {
+                    saveButton_status = false
+                    val save_text = findViewById<TextView>(R.id.saveText)
+                    val save_view = findViewById<LinearLayout>(R.id.saveView)
+//                    save_view.setBackgroundColor(Color.parseColor("#BDBDBD")) // Set to grey color
+                    save_view.getBackground().setTint(Color.parseColor("#FF9A3D"));
+                    save_text.setTextColor(Color.parseColor("#FFFFFF"))
+                    save_text.setText("Save Recipe")
+                    val bookmark = findViewById(R.id.bookmarkIcon) as ImageView
+                    bookmark.setImageResource(R.drawable.bookmark)
+                }
+
+            },
+            Response.ErrorListener { error ->
+                error.printStackTrace()
+            }
+        ) {}
+        requestQueue.add(stringRequest)
     }
 
 }

@@ -1,5 +1,5 @@
 import sqlite3
-
+import json
 # Create a connection to the SQLite database
 conn = sqlite3.connect('food_database.db')
 
@@ -54,24 +54,24 @@ cursor.execute('''
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT NOT NULL,
-        password TEXT NOT NULL
+        password TEXT NOT NULL,
+        save_recipe TEXT
     )
 ''')
 
 # Insert user entries
 user_data = [
-    ('user1', 'password1'),
-    ('user2', 'password2'),
+    ('user1', 'password1', json.dumps([1, 2, 3])),  # User1 has saved recipes 1, 2, 3
+    ('user2', 'password2', json.dumps([2, 4, 6])),  # User2 has saved recipes 2, 4, 6
     # Add more users as needed
 ]
 
 for user_entry in user_data:
     username = user_entry[0]
-    cursor.execute("SELECT COUNT(*) FROM users WHERE username=?", (username,))
-    count = cursor.fetchone()[0]
-    if count == 0:
-        cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", user_entry)
-
+    password = user_entry[1]
+    save_recipe = user_entry[2]
+    cursor.execute("INSERT INTO users (username, password, save_recipe) VALUES (?, ?, ?)", (username, password, save_recipe))
+    
 # Commit the changes and close the connection
 conn.commit()
 conn.close()

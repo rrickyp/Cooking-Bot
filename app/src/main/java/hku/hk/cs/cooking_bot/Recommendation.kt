@@ -7,6 +7,7 @@ import android.graphics.Typeface
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
@@ -33,7 +34,8 @@ class Recommendation : AppCompatActivity() {
         val cooking_time: Int,
         val how_to_cook: String,
         val image_path: String,
-        val video_path: String
+        val video_path: String,
+        val id: String
     )
 
     private var cook_now_button: Button? = null
@@ -43,6 +45,7 @@ class Recommendation : AppCompatActivity() {
 
     private var otherRecommends:FlexboxLayout? = null
     private var currentActivity: Activity? = null
+    private var username:String =""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recommendation)
@@ -52,12 +55,15 @@ class Recommendation : AppCompatActivity() {
 
         val intent = getIntent()
         val data = intent.getStringArrayListExtra("user_data")
+        username = data!![0]
 
         val home_view = findViewById(R.id.home_icon) as ImageView
 
         home_view.setOnClickListener {
             val goBackToHome = Intent(this, Home::class.java)
             goBackToHome.putStringArrayListExtra("user_data", data)
+            // Now you can use the data
+            // For example, you can print it to the log
             startActivity(goBackToHome)
             finish()
         }
@@ -224,7 +230,7 @@ private fun getOtherRecommendationFromAPI(foodNames: Array<String>) {
                     val resId = resources.getIdentifier(imageName, "drawable", packageName)
 
                     val density = resources.displayMetrics.density
-                    val sizeInDp = 160
+                    val sizeInDp = 150
                     val marginInDp = 10
                     val sizeInPx = (sizeInDp * density).toInt()
                     val marginInPx = (marginInDp * density).toInt()
@@ -275,7 +281,7 @@ private fun getOtherRecommendationFromAPI(foodNames: Array<String>) {
 
                     // Create TextViews and add them to the LinearLayout
                     val textView13 = TextView(this).apply {
-                        id = R.id.textView13
+                        id = View.generateViewId()
                         layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT).apply {
                             val marginInDp = 5
                             val marginInPx = (marginInDp * density).toInt()
@@ -287,21 +293,21 @@ private fun getOtherRecommendationFromAPI(foodNames: Array<String>) {
                     }
                     linearLayout.addView(textView13)
                     val textView14 = TextView(this).apply {
-                        id = R.id.textView14
+                        id = View.generateViewId()
                         layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
                         text = "Prep Time: ${selected_food_data?.preparation_time} mins"
                         textSize = 15f
                     }
                     linearLayout.addView(textView14)
                     val textView15 = TextView(this).apply {
-                        id = R.id.textView15
+                        id = View.generateViewId()
                         layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
                         text = "Cook Time: ${selected_food_data?.cooking_time} mins"
                         textSize = 15f
                     }
                     linearLayout.addView(textView15)
                     val textView16 = TextView(this).apply {
-                        id = R.id.textView16
+                        id = View.generateViewId()
                         layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
                         text = "Total Ingredients: ${selected_food_data?.total_ingredients}"
                         textSize = 15f
@@ -325,6 +331,8 @@ private fun getOtherRecommendationFromAPI(foodNames: Array<String>) {
                             val goToRecipe = Intent(currentActivity, RecommendedRecipeActivity::class.java)
                             goToRecipe.putExtra("selected_food_data", jsonSelectedFoodData)
                             println("jsonselecteddata: $jsonSelectedFoodData")
+                            val temp = arrayListOf<String>(username)
+                            goToRecipe.putExtra("user_data", temp)
                             startActivity(goToRecipe)
                         }
                     }

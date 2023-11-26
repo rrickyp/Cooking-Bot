@@ -212,178 +212,179 @@
             </LinearLayout>
 
             <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/saved_recipe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:columnCount="1"
                 app:rowCount="3">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="12dp">-->
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/imageView5"
-                        android:layout_width="68dp"
-                        android:layout_height="68dp"
-                        android:layout_marginEnd="20dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/kebab"
-                        app:shapeAppearanceOverlay="@style/RoundedSquare" />
+<!--                    <com.google.android.material.imageview.ShapeableImageView-->
+<!--                        android:id="@+id/imageView5"-->
+<!--                        android:layout_width="68dp"-->
+<!--                        android:layout_height="68dp"-->
+<!--                        android:layout_marginEnd="20dp"-->
+<!--                        android:adjustViewBounds="true"-->
+<!--                        android:scaleType="centerCrop"-->
+<!--                        android:src="@drawable/kebab"-->
+<!--                        app:shapeAppearanceOverlay="@style/RoundedSquare" />-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:orientation="vertical">-->
 
-                        <TextView
-                            android:id="@+id/textView7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="3dp"
-                            android:fontFamily="sans-serif-medium"
-                            android:gravity="left"
-                            android:text="25 mins ∙ 7 ingredients ∙ 16 Oct"
-                            android:textColor="#ADADAD"
-                            android:textSize="10dp" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/textView7"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="sans-serif-medium"-->
+<!--                            android:gravity="left"-->
+<!--                            android:text="25 mins ∙ 7 ingredients ∙ 16 Oct"-->
+<!--                            android:textColor="#ADADAD"-->
+<!--                            android:textSize="10dp" />-->
 
-                        <TextView
-                            android:id="@+id/textView8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="3dp"
-                            android:fontFamily="sans-serif-medium"
-                            android:gravity="left"
-                            android:text="Kebab"
-                            android:textSize="14dp" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/textView8"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="sans-serif-medium"-->
+<!--                            android:gravity="left"-->
+<!--                            android:text="Kebab"-->
+<!--                            android:textSize="14dp" />-->
 
-                        <TextView
-                            android:id="@+id/textView9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
-                            android:gravity="left"
-                            android:text="Pita Bread ∙ Chicken Thighs ∙ Olive Oil ∙ Yoghurt ∙ Paprika ∙ Tomato slices ∙ Garlic cloves minced"
-                            android:textColor="#ADADAD"
-                            android:textSize="10dp" />
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp">
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="68dp"
-                        android:layout_height="68dp"
-                        android:layout_marginEnd="20dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/burger"
-                        app:shapeAppearanceOverlay="@style/RoundedSquare" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="3dp"
-                            android:fontFamily="sans-serif-medium"
-                            android:gravity="left"
-                            android:text="25 mins ∙ 12 ingredients ∙ 30 Oct"
-                            android:textColor="#ADADAD"
-                            android:textSize="10dp" />
-
-                        <TextView
-                            android:id="@+id/textView11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="3dp"
-                            android:fontFamily="sans-serif-medium"
-                            android:gravity="left"
-                            android:text="Cheeseburger"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/textView12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
-                            android:gravity="left"
-                            android:text="Ground Chuck ∙ Onion Powder ∙ Teaspoon Salt ∙ Black Pepper ∙ Cheese ∙ Burger Buns ∙ Ketchup ∙ Mayonnaise ∙ Thousand Island Dressing ∙ Sliced Tomato ∙ Fresh Lettuce Leaves ∙ Beef"
-                            android:textColor="#ADADAD"
-                            android:textSize="10dp" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/textView9"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:fontFamily="sans-serif-medium"-->
+<!--                            android:gravity="left"-->
+<!--                            android:text="Pita Bread ∙ Chicken Thighs ∙ Olive Oil ∙ Yoghurt ∙ Paprika ∙ Tomato slices ∙ Garlic cloves minced"-->
+<!--                            android:textColor="#ADADAD"-->
+<!--                            android:textSize="10dp" />-->
 
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="12dp">-->
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/imageView8"
-                        android:layout_width="68dp"
-                        android:layout_height="68dp"
-                        android:layout_marginEnd="20dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/pasta"
-                        app:shapeAppearanceOverlay="@style/RoundedSquare" />
+<!--                    <com.google.android.material.imageview.ShapeableImageView-->
+<!--                        android:id="@+id/imageView6"-->
+<!--                        android:layout_width="68dp"-->
+<!--                        android:layout_height="68dp"-->
+<!--                        android:layout_marginEnd="20dp"-->
+<!--                        android:adjustViewBounds="true"-->
+<!--                        android:scaleType="centerCrop"-->
+<!--                        android:src="@drawable/burger"-->
+<!--                        app:shapeAppearanceOverlay="@style/RoundedSquare" />-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:orientation="vertical">-->
 
-                        <TextView
-                            android:id="@+id/textView13"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="3dp"
-                            android:fontFamily="sans-serif-medium"
-                            android:gravity="left"
-                            android:text="15 mins ∙ 5 ingredients ∙ 30 Oct"
-                            android:textColor="#ADADAD"
-                            android:textSize="10dp" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/textView10"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="sans-serif-medium"-->
+<!--                            android:gravity="left"-->
+<!--                            android:text="25 mins ∙ 12 ingredients ∙ 30 Oct"-->
+<!--                            android:textColor="#ADADAD"-->
+<!--                            android:textSize="10dp" />-->
 
-                        <TextView
-                            android:id="@+id/textView14"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="3dp"
-                            android:fontFamily="sans-serif-medium"
-                            android:gravity="left"
-                            android:text="Pasta"
-                            android:textSize="14dp" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/textView11"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="sans-serif-medium"-->
+<!--                            android:gravity="left"-->
+<!--                            android:text="Cheeseburger"-->
+<!--                            android:textSize="14dp" />-->
 
-                        <TextView
-                            android:id="@+id/textView15"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
-                            android:gravity="left"
-                            android:text="All Purpose Flour ∙ Eggs ∙ Olive Oil ∙ Cheese ∙ Beef"
-                            android:textColor="#ADADAD"
-                            android:textSize="10dp" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/textView12"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:fontFamily="sans-serif-medium"-->
+<!--                            android:gravity="left"-->
+<!--                            android:text="Ground Chuck ∙ Onion Powder ∙ Teaspoon Salt ∙ Black Pepper ∙ Cheese ∙ Burger Buns ∙ Ketchup ∙ Mayonnaise ∙ Thousand Island Dressing ∙ Sliced Tomato ∙ Fresh Lettuce Leaves ∙ Beef"-->
+<!--                            android:textColor="#ADADAD"-->
+<!--                            android:textSize="10dp" />-->
 
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="12dp">-->
+
+<!--                    <com.google.android.material.imageview.ShapeableImageView-->
+<!--                        android:id="@+id/imageView8"-->
+<!--                        android:layout_width="68dp"-->
+<!--                        android:layout_height="68dp"-->
+<!--                        android:layout_marginEnd="20dp"-->
+<!--                        android:adjustViewBounds="true"-->
+<!--                        android:scaleType="centerCrop"-->
+<!--                        android:src="@drawable/pasta"-->
+<!--                        app:shapeAppearanceOverlay="@style/RoundedSquare" />-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/textView13"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="sans-serif-medium"-->
+<!--                            android:gravity="left"-->
+<!--                            android:text="15 mins ∙ 5 ingredients ∙ 30 Oct"-->
+<!--                            android:textColor="#ADADAD"-->
+<!--                            android:textSize="10dp" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/textView14"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginBottom="3dp"-->
+<!--                            android:fontFamily="sans-serif-medium"-->
+<!--                            android:gravity="left"-->
+<!--                            android:text="Pasta"-->
+<!--                            android:textSize="14dp" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/textView15"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:fontFamily="sans-serif-medium"-->
+<!--                            android:gravity="left"-->
+<!--                            android:text="All Purpose Flour ∙ Eggs ∙ Olive Oil ∙ Cheese ∙ Beef"-->
+<!--                            android:textColor="#ADADAD"-->
+<!--                            android:textSize="10dp" />-->
+
+
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
 
 
             </androidx.gridlayout.widget.GridLayout>
