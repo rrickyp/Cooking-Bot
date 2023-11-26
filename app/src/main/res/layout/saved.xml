@@ -17,7 +17,6 @@
             android:id="@+id/frame_10"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="64dp"
             android:background="#FFFFFF"
             android:orientation="vertical"
             android:padding="20dp">
@@ -302,21 +301,21 @@
                     android:id="@+id/home_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/homeoutlined" />
+                    android:src="@drawable/HomeOutlined" />
 
                 <ImageView
                     android:id="@+id/saved_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="64dp"
-                    android:src="@drawable/savedfilled" />
+                    android:src="@drawable/SavedFilled" />
 
                 <ImageView
                     android:id="@+id/setting_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:layout_marginLeft="64dp"
-                    android:src="@drawable/settingoutlined" />
+                    android:src="@drawable/profileOutlined" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
