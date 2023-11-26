@@ -60,7 +60,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress"
+                android:id="@+id/editTextTextUsernameL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -70,12 +70,12 @@
                 android:layout_marginTop="28dp"
                 android:layout_marginHorizontal="40dp"
                 android:paddingHorizontal="20dp"
-                android:hint="Email"
+                android:hint="Username"
                 android:textColorHint="#CCCCCC"
-                android:inputType="textEmailAddress" />
+                android:inputType="text" />
 
             <EditText
-                android:id="@+id/editTextTextPassword"
+                android:id="@+id/editTextTextPasswordL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
