@@ -39,6 +39,8 @@ class Recommendation : AppCompatActivity() {
     private var cook_now_button: Button? = null
     private var cook_now_button_1: TextView? = null
     private var selected_food_data: FoodData? = null
+    private var selected_food: FoodData? = null
+
     private var otherRecommends:FlexboxLayout? = null
     private var currentActivity: Activity? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,8 +86,8 @@ class Recommendation : AppCompatActivity() {
         }
 
         cook_now_button?.setOnClickListener {
-            if (selected_food_data != null) {
-                val jsonSelectedFoodData = Gson().toJson(selected_food_data)
+            if (selected_food != null) {
+                val jsonSelectedFoodData = Gson().toJson(selected_food)
                 val goToRecipe = Intent(this, RecommendedRecipeActivity::class.java)
                 goToRecipe.putExtra("selected_food_data", jsonSelectedFoodData)
                 println("jsonselecteddata: $jsonSelectedFoodData")
@@ -110,11 +112,11 @@ class Recommendation : AppCompatActivity() {
                 // Handle the successful response here
                 val foodDataJson = response
                 val foodData = Gson().fromJson(foodDataJson, FoodData::class.java)
-                selected_food_data = foodData
-                println("selectedfooddata: $selected_food_data")
+                selected_food = foodData
+                println("selectedfooddata: $selected_food")
 
                 val imageView = findViewById<ImageView>(R.id.imageView)
-                val imagePath = selected_food_data?.image_path
+                val imagePath = selected_food?.image_path
                 if (imagePath != null && imagePath.isNotEmpty()) {
                     val drawableId = resources.getIdentifier(imagePath, "drawable", packageName)
                     if (drawableId != 0) {
@@ -123,11 +125,11 @@ class Recommendation : AppCompatActivity() {
                 }
 
                 val timeAndIngredientsTextView = findViewById<TextView>(R.id.textView4)
-                val cookingTime = selected_food_data?.cooking_time ?: 0
-                val preparationTime = selected_food_data?.preparation_time ?: 0
+                val cookingTime = selected_food?.cooking_time ?: 0
+                val preparationTime = selected_food?.preparation_time ?: 0
                 val totalTime = cookingTime + preparationTime
 
-                val timeAndIngredientsText = "$totalTime mins | ${selected_food_data?.total_ingredients} ingredients"
+                val timeAndIngredientsText = "$totalTime mins | ${selected_food?.total_ingredients} ingredients"
                 timeAndIngredientsTextView.text = timeAndIngredientsText
 
             },
@@ -236,7 +238,9 @@ private fun getOtherRecommendationFromAPI(foodNames: Array<String>) {
                             println(resId)
                         }
                         else {
-                            setImageResource(2131165432)
+                            val notfound = resources.getIdentifier("food_hub", "drawable", packageName)
+
+                            setImageResource(notfound)
                         }
                     }
 
