@@ -1,4 +1,4 @@
-# FoodHub
+# FoodHub <img src="app/src/main/res/drawable/logo_transparent.png" width="40"/>
 A personalized cooking bot application, that generate recipes based on the ingredients that users have.
 
 https://github.com/rrickyp/Cooking-Bot/assets/100031934/73bd9a2d-c009-4555-846b-03cba3955c40
