@@ -70,6 +70,10 @@ class RecommendedRecipeActivity : AppCompatActivity() {
             if (drawableId != 0) {
                 imageView.setImageResource(drawableId)
             }
+            else {
+                val notfound = resources.getIdentifier("logo", "drawable", packageName)
+                imageView.setImageResource(notfound)
+            }
         }
 
         val how_to_cook_data = selectedFoodData?.how_to_cook ?: "1. Cook the patty, 2. Assemble the patty with the rest of the ingredients."
